@@ -29,10 +29,10 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="py-24 bg-[#0f0f0f] border-t border-white/5">
+    <section className="py-16 bg-[#0f0f0f] border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
-        <AnimatedSection className="mb-16">
+        <AnimatedSection className="mb-10">
           <span className="section-label block mb-4">Testimonios</span>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
             <h2

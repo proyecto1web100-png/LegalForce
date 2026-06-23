@@ -1,15 +1,32 @@
+import dynamic from "next/dynamic";
 import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
 import { HeroSection } from "@/components/sections/HeroSection";
-import { PracticeAreas } from "@/components/sections/PracticeAreas";
-import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
-import { WorkProcess } from "@/components/sections/WorkProcess";
-import { FrequentCases } from "@/components/sections/FrequentCases";
-import { Statistics } from "@/components/sections/Statistics";
-import { Testimonials } from "@/components/sections/Testimonials";
-import { BlogSection } from "@/components/sections/BlogSection";
-import { ContactSection } from "@/components/sections/ContactSection";
-import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
+
+// Lazy-load all below-fold sections to speed up initial render
+const Statistics = dynamic(() =>
+  import("@/components/sections/Statistics").then((m) => ({ default: m.Statistics }))
+);
+const PracticeAreas = dynamic(() =>
+  import("@/components/sections/PracticeAreas").then((m) => ({ default: m.PracticeAreas }))
+);
+const StrategySection = dynamic(() =>
+  import("@/components/sections/StrategySection").then((m) => ({ default: m.StrategySection }))
+);
+const Testimonials = dynamic(() =>
+  import("@/components/sections/Testimonials").then((m) => ({ default: m.Testimonials }))
+);
+const BlogSection = dynamic(() =>
+  import("@/components/sections/BlogSection").then((m) => ({ default: m.BlogSection }))
+);
+const ContactSection = dynamic(() =>
+  import("@/components/sections/ContactSection").then((m) => ({ default: m.ContactSection }))
+);
+const Footer = dynamic(() =>
+  import("@/components/layout/Footer").then((m) => ({ default: m.Footer }))
+);
+const FloatingWhatsApp = dynamic(() =>
+  import("@/components/FloatingWhatsApp").then((m) => ({ default: m.FloatingWhatsApp }))
+);
 
 export default function Home() {
   return (
@@ -17,11 +34,9 @@ export default function Home() {
       <Navbar />
       <main>
         <HeroSection />
-        <PracticeAreas />
-        <WhyChooseUs />
-        <WorkProcess />
-        <FrequentCases />
         <Statistics />
+        <PracticeAreas />
+        <StrategySection />
         <Testimonials />
         <BlogSection />
         <ContactSection />

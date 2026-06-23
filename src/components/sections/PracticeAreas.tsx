@@ -67,10 +67,10 @@ const areas = [
 
 export function PracticeAreas() {
   return (
-    <section id="servicios" className="py-24 bg-[#090909]">
+    <section id="servicios" className="py-16 bg-[#090909]">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
-        <AnimatedSection className="mb-16">
+        <AnimatedSection className="mb-10">
           <span className="section-label block mb-4">Áreas de Práctica</span>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
             <h2
