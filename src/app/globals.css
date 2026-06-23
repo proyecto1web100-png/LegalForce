@@ -149,6 +149,61 @@ body {
   to   { opacity: 1; transform: none; }
 }
 
+/* ── Hero word-by-word reveal ── */
+@keyframes hero-word {
+  from { opacity: 0; transform: translateY(26px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ── Blur reveal (confidentiality) ── */
+.blur-reveal {
+  filter: blur(14px);
+  opacity: 0.15;
+  transition: filter 1.5s cubic-bezier(0.22,1,0.36,1),
+              opacity 1.5s cubic-bezier(0.22,1,0.36,1);
+}
+.blur-reveal.visible {
+  filter: blur(0);
+  opacity: 1;
+}
+
+/* ── First visit overlay ── */
+@keyframes overlay-bg-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes overlay-card-in {
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ── Emergency panel ── */
+@keyframes emergency-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ── Tab content ── */
+@keyframes tab-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ── Horizontal process scroll ── */
+.process-scroll {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  gap: 0;
+}
+.process-scroll::-webkit-scrollbar { display: none; }
+.process-step-card {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

@@ -1,6 +1,7 @@
 "use client";
 
-import { Shield, Clock, Star } from "lucide-react";
+import { Shield, Clock, Star, Users } from "lucide-react";
+import { useState, useEffect } from "react";
 
 const WHATSAPP_NUMBER = "50498206681";
 const WHATSAPP_MSG = encodeURIComponent(
@@ -14,14 +15,46 @@ const WA_ICON = (
   </svg>
 );
 
+function useConsultationCount() {
+  const [count, setCount] = useState<number | null>(null);
+  useEffect(() => {
+    const now = new Date();
+    const utcMs = now.getTime() + now.getTimezoneOffset() * 60000;
+    const hn = new Date(utcMs - 6 * 3600000);
+    const hour = hn.getHours();
+    const day = hn.getDay();
+    const isWeekday = day >= 1 && day <= 5;
+    const activeHours = isWeekday ? Math.max(0, Math.min(hour, 18) - 8) : 0;
+    const seed = hn.getDate() % 5;
+    setCount(7 + seed + Math.floor(activeHours * 1.3));
+  }, []);
+  return count;
+}
+
+const lines = [
+  { words: ["La", "Justicia"], color: "text-[#F5F0E8]", italic: false },
+  { words: ["Es", "Nuestro"], color: "text-[#C9A44C]", italic: true },
+  { words: ["Oficio."], color: "text-[#F5F0E8]", italic: false },
+];
+
 export function HeroSection() {
+  const count = useConsultationCount();
+
+  const badges = [
+    { icon: Shield, text: "Confidencialidad garantizada" },
+    { icon: Clock, text: "Respuesta en 24 horas" },
+    { icon: Star, text: "98% de satisfacción" },
+    ...(count !== null ? [{ icon: Users, text: `${count} consultas hoy` }] : []),
+  ];
+
+  let wordIndex = 0;
+
   return (
     <section
       id="inicio"
       className="relative min-h-screen flex flex-col justify-center overflow-hidden"
       style={{ background: "#050505" }}
     >
-      {/* Ambient light — pure CSS, zero GPU compositing */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -29,8 +62,6 @@ export function HeroSection() {
             "radial-gradient(ellipse 800px 700px at -8% 55%, rgba(201,164,76,0.055) 0%, transparent 62%), radial-gradient(ellipse 600px 500px at 108% 20%, rgba(201,164,76,0.03) 0%, transparent 62%)",
         }}
       />
-
-      {/* Top hairline */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A44C]/20 to-transparent" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-24">
@@ -48,32 +79,28 @@ export function HeroSection() {
           </span>
         </div>
 
-        {/* Headline — Cormorant Garamond display */}
-        <h1
-          className="leading-[0.92] mb-8"
-          style={{
-            fontFamily: "var(--font-heading)",
-            animation: "hero-up 0.85s cubic-bezier(0.22,1,0.36,1) 0.12s both",
-          }}
-        >
-          <span
-            className="block text-[#F5F0E8] font-medium"
-            style={{ fontSize: "clamp(3.8rem, 9.5vw, 8.5rem)" }}
-          >
-            La Justicia
-          </span>
-          <span
-            className="block text-[#C9A44C] italic font-medium"
-            style={{ fontSize: "clamp(3.8rem, 9.5vw, 8.5rem)" }}
-          >
-            Es Nuestro
-          </span>
-          <span
-            className="block text-[#F5F0E8] font-medium"
-            style={{ fontSize: "clamp(3.8rem, 9.5vw, 8.5rem)" }}
-          >
-            Oficio.
-          </span>
+        {/* Headline — word-by-word reveal */}
+        <h1 className="leading-[0.92] mb-8" style={{ fontFamily: "var(--font-heading)" }}>
+          {lines.map((line) => (
+            <span
+              key={line.words.join("")}
+              className="block"
+              style={{ fontSize: "clamp(3.8rem, 9.5vw, 8.5rem)" }}
+            >
+              {line.words.map((word) => {
+                const delay = 0.1 + wordIndex++ * 0.11;
+                return (
+                  <span
+                    key={word}
+                    className={`inline-block font-medium mr-[0.2em] ${line.color}${line.italic ? " italic" : ""}`}
+                    style={{ animation: `hero-word 0.75s cubic-bezier(0.22,1,0.36,1) ${delay}s both` }}
+                  >
+                    {word}
+                  </span>
+                );
+              })}
+            </span>
+          ))}
         </h1>
 
         {/* Subheading */}
@@ -82,7 +109,7 @@ export function HeroSection() {
           style={{
             fontFamily: "var(--font-body)",
             fontSize: "clamp(0.82rem, 1.4vw, 0.95rem)",
-            animation: "hero-up 0.65s cubic-bezier(0.22,1,0.36,1) 0.32s both",
+            animation: "hero-up 0.65s cubic-bezier(0.22,1,0.36,1) 0.55s both",
           }}
         >
           Más de una década protegiendo los derechos de nuestros clientes
@@ -92,7 +119,7 @@ export function HeroSection() {
         {/* CTAs */}
         <div
           className="flex flex-col sm:flex-row gap-4 mb-16"
-          style={{ animation: "hero-up 0.65s cubic-bezier(0.22,1,0.36,1) 0.44s both" }}
+          style={{ animation: "hero-up 0.65s cubic-bezier(0.22,1,0.36,1) 0.66s both" }}
         >
           <a
             href={`https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MSG}`}
@@ -118,13 +145,9 @@ export function HeroSection() {
         {/* Trust badges */}
         <div
           className="flex flex-wrap items-center gap-x-8 gap-y-3"
-          style={{ animation: "hero-in 0.6s ease 0.72s both" }}
+          style={{ animation: "hero-in 0.6s ease 0.82s both" }}
         >
-          {[
-            { icon: Shield, text: "Confidencialidad garantizada" },
-            { icon: Clock, text: "Respuesta en 24 horas" },
-            { icon: Star, text: "98% de satisfacción" },
-          ].map(({ icon: Icon, text }) => (
+          {badges.map(({ icon: Icon, text }) => (
             <div
               key={text}
               className="flex items-center gap-2 text-[#F5F0E8]/30 text-xs tracking-wide"
@@ -137,7 +160,6 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Bottom hairline */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A44C]/12 to-transparent" />
     </section>
   );

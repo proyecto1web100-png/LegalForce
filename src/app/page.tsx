@@ -11,8 +11,14 @@ const PracticeAreas = dynamic(() =>
 const CaseEvaluator = dynamic(() =>
   import("@/components/sections/CaseEvaluator").then((m) => ({ default: m.CaseEvaluator }))
 );
+const LegalToolsSection = dynamic(() =>
+  import("@/components/sections/LegalToolsSection").then((m) => ({ default: m.LegalToolsSection }))
+);
 const StrategySection = dynamic(() =>
   import("@/components/sections/StrategySection").then((m) => ({ default: m.StrategySection }))
+);
+const ConfidentialitySection = dynamic(() =>
+  import("@/components/sections/ConfidentialitySection").then((m) => ({ default: m.ConfidentialitySection }))
 );
 const Testimonials = dynamic(() =>
   import("@/components/sections/Testimonials").then((m) => ({ default: m.Testimonials }))
@@ -29,6 +35,12 @@ const Footer = dynamic(() =>
 const FloatingWhatsApp = dynamic(() =>
   import("@/components/FloatingWhatsApp").then((m) => ({ default: m.FloatingWhatsApp }))
 );
+const EmergencyButton = dynamic(() =>
+  import("@/components/ui/EmergencyButton").then((m) => ({ default: m.EmergencyButton }))
+);
+const FirstVisitOverlay = dynamic(() =>
+  import("@/components/ui/FirstVisitOverlay").then((m) => ({ default: m.FirstVisitOverlay }))
+);
 
 export default function Home() {
   return (
@@ -41,13 +53,17 @@ export default function Home() {
         <Statistics />
         <PracticeAreas />
         <CaseEvaluator />
+        <LegalToolsSection />
         <StrategySection />
+        <ConfidentialitySection />
         <Testimonials />
         <BlogSection />
         <ContactSection />
       </main>
       <Footer />
       <FloatingWhatsApp />
+      <EmergencyButton />
+      <FirstVisitOverlay />
     </>
   );
 }

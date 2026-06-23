@@ -29,6 +29,7 @@ const areas = [
     title: "Derecho Penal",
     description:
       "Defensa en procesos penales, delitos económicos y contra la persona. Protegemos tu libertad con estrategia sólida y preparación exhaustiva.",
+    steps: ["Consulta urgente", "Análisis penal", "Defensa activa", "Resolución"],
     waMsg: "Hola, necesito asesoría en Derecho Penal. ¿Pueden ayudarme?",
   },
   {
@@ -36,6 +37,7 @@ const areas = [
     title: "Derecho Laboral",
     description:
       "Representación en conflictos laborales, despidos injustificados, negociación colectiva y reclamaciones de prestaciones ante los Juzgados de Trabajo.",
+    steps: ["Revisión del caso", "Mediación previa", "Juzgado de Trabajo", "Sentencia"],
     waMsg: "Hola, tengo un caso de Derecho Laboral y necesito asesoría.",
   },
   {
@@ -43,6 +45,7 @@ const areas = [
     title: "Derecho Civil",
     description:
       "Contratos, responsabilidad civil, sucesiones, propiedad y todo tipo de litigios entre particulares con resolución eficiente y efectiva.",
+    steps: ["Diagnóstico legal", "Negociación", "Proceso judicial", "Resolución"],
     waMsg: "Hola, necesito asesoría en Derecho Civil. ¿Pueden orientarme?",
   },
   {
@@ -50,6 +53,7 @@ const areas = [
     title: "Derecho Administrativo",
     description:
       "Recursos ante entidades públicas, contrataciones estatales, impugnaciones y defensa frente al Estado en todos sus niveles.",
+    steps: ["Revisión del acto", "Recurso admin.", "Tribunal", "Resolución"],
     waMsg: "Hola, necesito asesoría en Derecho Administrativo.",
   },
   {
@@ -57,6 +61,7 @@ const areas = [
     title: "Derecho Migratorio",
     description:
       "Regularización migratoria, visas de residencia, ciudadanía y asesoría integral para extranjeros en Honduras con los últimos cambios normativos.",
+    steps: ["Revisión de estatus", "Expediente", "Trámite INM", "Aprobación"],
     waMsg: "Hola, necesito asesoría sobre trámites migratorios en Honduras.",
   },
   {
@@ -64,6 +69,7 @@ const areas = [
     title: "Derecho Tributario",
     description:
       "Planificación fiscal, recursos ante el SAR y defensa en auditorías, procedimientos tributarios y controversias con la administración.",
+    steps: ["Auditoría inicial", "Respuesta SAR", "Recurso legal", "Cierre fiscal"],
     waMsg: "Hola, necesito asesoría en Derecho Tributario o asuntos con el SAR.",
   },
   {
@@ -71,6 +77,7 @@ const areas = [
     title: "Derecho Fiscal",
     description:
       "Asesoría integral en obligaciones fiscales, cumplimiento normativo y optimización de cargas impositivas para personas y empresas.",
+    steps: ["Diagnóstico fiscal", "Plan tributario", "Implementación", "Optimización"],
     waMsg: "Hola, necesito asesoría fiscal para mi empresa o situación personal.",
   },
   {
@@ -78,9 +85,33 @@ const areas = [
     title: "Derecho Notarial",
     description:
       "Escrituras públicas, autenticaciones, poderes notariales, contratos y toda clase de instrumentos legales con validez jurídica plena.",
+    steps: ["Consulta", "Borrador legal", "Revisión", "Firma y registro"],
     waMsg: "Hola, necesito servicios notariales (escritura, poder u otro instrumento).",
   },
 ];
+
+function MiniTimeline({ steps }: { steps: string[] }) {
+  return (
+    <div className="flex items-center gap-0 mb-5 overflow-x-auto pb-1 scrollbar-hide">
+      {steps.map((step, i) => (
+        <div key={step} className="flex items-center shrink-0">
+          <div className="flex flex-col items-center gap-1">
+            <div className="w-2 h-2 rounded-full bg-[#C9A44C]/60 border border-[#C9A44C]/40" />
+            <span
+              className="text-[#F5F0E8]/40 whitespace-nowrap"
+              style={{ fontFamily: "var(--font-body)", fontSize: "0.6rem", letterSpacing: "0.04em" }}
+            >
+              {step}
+            </span>
+          </div>
+          {i < steps.length - 1 && (
+            <div className="w-8 sm:w-12 h-px bg-gradient-to-r from-[#C9A44C]/30 to-[#C9A44C]/10 mx-1 mb-3 shrink-0" />
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export function PracticeAreas() {
   const [openTitle, setOpenTitle] = useState<string | null>(null);
@@ -167,6 +198,7 @@ export function PracticeAreas() {
                       className="pb-7 px-1 pl-[52px]"
                       style={{ animation: "accordion-open 0.22s ease both" }}
                     >
+                      <MiniTimeline steps={area.steps} />
                       <p
                         className="text-[#F5F0E8]/45 text-sm leading-relaxed mb-5"
                         style={{ fontFamily: "var(--font-body)" }}
