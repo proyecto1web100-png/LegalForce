@@ -35,7 +35,7 @@ export default function Home() {
     <>
       <ReadingProgressBar />
       <Navbar />
-      <main>
+      <main className="overflow-x-hidden">
         <HeroSection />
         <MarqueeStrip />
         <Statistics />

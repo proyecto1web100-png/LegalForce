@@ -2,7 +2,7 @@
 
 import { Shield, Clock, Star } from "lucide-react";
 
-const WHATSAPP_NUMBER = "50400000000";
+const WHATSAPP_NUMBER = "50498206681";
 const WHATSAPP_MSG = encodeURIComponent(
   "Hola, me gustaría obtener información sobre los servicios de Legal Force HN."
 );

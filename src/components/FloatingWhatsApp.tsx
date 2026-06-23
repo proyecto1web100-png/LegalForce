@@ -1,6 +1,6 @@
 "use client";
 
-const WHATSAPP_NUMBER = "50400000000";
+const WHATSAPP_NUMBER = "50498206681";
 const WHATSAPP_MSG = encodeURIComponent(
   "Hola, me gustaría obtener más información sobre los servicios de Legal Force HN."
 );
