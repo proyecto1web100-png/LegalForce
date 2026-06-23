@@ -1,0 +1,326 @@
+"use client";
+
+import { useState } from "react";
+import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from "lucide-react";
+import { AnimatedSection } from "@/components/ui/AnimatedSection";
+
+const WHATSAPP_NUMBER = "50400000000";
+
+const subjects = [
+  "Derecho Penal",
+  "Derecho Laboral",
+  "Derecho Civil",
+  "Derecho Administrativo",
+  "Derecho Migratorio",
+  "Derecho Tributario / Fiscal",
+  "Derecho Notarial",
+  "Consulta General",
+];
+
+export function ContactSection() {
+  const [sent, setSent] = useState(false);
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // In production, connect to a backend or service like Resend / EmailJS
+    setSent(true);
+  };
+
+  return (
+    <section id="contacto" className="py-24 bg-[#0f0f0f] border-t border-white/5">
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Header */}
+        <AnimatedSection className="mb-16 text-center">
+          <span className="section-label block mb-4">Contacto</span>
+          <h2
+            className="text-4xl sm:text-5xl font-bold text-white"
+            style={{ fontFamily: "var(--font-heading)" }}
+          >
+            Agenda Tu <span className="text-[#C9A44C]">Consulta</span>
+          </h2>
+          <p
+            className="text-white/45 text-base mt-4 max-w-xl mx-auto"
+            style={{ fontFamily: "var(--font-body)" }}
+          >
+            La primera consulta es confidencial. Cuéntanos tu caso y te
+            respondemos en menos de 24 horas.
+          </p>
+          <span className="gold-rule-lg mt-6 mx-auto block" />
+        </AnimatedSection>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Form */}
+          <AnimatedSection direction="right">
+            {sent ? (
+              <div className="card-glass rounded-sm p-10 flex flex-col items-center justify-center text-center gap-4 h-full min-h-[400px]">
+                <CheckCircle className="w-14 h-14 text-[#C9A44C]" />
+                <h3
+                  className="text-white text-xl font-semibold"
+                  style={{ fontFamily: "var(--font-heading)" }}
+                >
+                  ¡Mensaje enviado!
+                </h3>
+                <p
+                  className="text-white/50 text-sm max-w-xs"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  Nos pondremos en contacto contigo dentro de las próximas 24
+                  horas. También puedes contactarnos por WhatsApp.
+                </p>
+                <a
+                  href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 inline-flex items-center gap-2 bg-[#C9A44C] hover:bg-[#D4B76A] text-[#090909] font-semibold px-6 py-3 rounded-sm text-sm transition-colors duration-200 cursor-pointer"
+                  style={{ fontFamily: "var(--font-heading)" }}
+                >
+                  Ir a WhatsApp
+                </a>
+              </div>
+            ) : (
+              <form
+                onSubmit={handleSubmit}
+                className="card-glass rounded-sm p-8 flex flex-col gap-5"
+              >
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div className="flex flex-col gap-1.5">
+                    <label
+                      htmlFor="name"
+                      className="text-white/60 text-xs font-medium"
+                      style={{ fontFamily: "var(--font-body)" }}
+                    >
+                      Nombre completo *
+                    </label>
+                    <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      required
+                      value={form.name}
+                      onChange={handleChange}
+                      placeholder="Juan Pérez"
+                      className="bg-white/5 border border-white/10 focus:border-[#C9A44C]/50 text-white placeholder-white/25 rounded-sm px-4 py-3 text-sm outline-none transition-colors duration-200"
+                      style={{ fontFamily: "var(--font-body)" }}
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label
+                      htmlFor="email"
+                      className="text-white/60 text-xs font-medium"
+                      style={{ fontFamily: "var(--font-body)" }}
+                    >
+                      Correo electrónico *
+                    </label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      required
+                      value={form.email}
+                      onChange={handleChange}
+                      placeholder="juan@correo.com"
+                      className="bg-white/5 border border-white/10 focus:border-[#C9A44C]/50 text-white placeholder-white/25 rounded-sm px-4 py-3 text-sm outline-none transition-colors duration-200"
+                      style={{ fontFamily: "var(--font-body)" }}
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div className="flex flex-col gap-1.5">
+                    <label
+                      htmlFor="phone"
+                      className="text-white/60 text-xs font-medium"
+                      style={{ fontFamily: "var(--font-body)" }}
+                    >
+                      Teléfono / WhatsApp
+                    </label>
+                    <input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      value={form.phone}
+                      onChange={handleChange}
+                      placeholder="+504 0000-0000"
+                      className="bg-white/5 border border-white/10 focus:border-[#C9A44C]/50 text-white placeholder-white/25 rounded-sm px-4 py-3 text-sm outline-none transition-colors duration-200"
+                      style={{ fontFamily: "var(--font-body)" }}
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label
+                      htmlFor="subject"
+                      className="text-white/60 text-xs font-medium"
+                      style={{ fontFamily: "var(--font-body)" }}
+                    >
+                      Área legal *
+                    </label>
+                    <select
+                      id="subject"
+                      name="subject"
+                      required
+                      value={form.subject}
+                      onChange={handleChange}
+                      className="bg-[#161616] border border-white/10 focus:border-[#C9A44C]/50 text-white rounded-sm px-4 py-3 text-sm outline-none transition-colors duration-200 cursor-pointer"
+                      style={{ fontFamily: "var(--font-body)" }}
+                    >
+                      <option value="" disabled>
+                        Seleccionar área...
+                      </option>
+                      {subjects.map((s) => (
+                        <option key={s} value={s}>
+                          {s}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-1.5">
+                  <label
+                    htmlFor="message"
+                    className="text-white/60 text-xs font-medium"
+                    style={{ fontFamily: "var(--font-body)" }}
+                  >
+                    Cuéntanos tu caso *
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    required
+                    value={form.message}
+                    onChange={handleChange}
+                    rows={5}
+                    placeholder="Describe brevemente tu situación legal..."
+                    className="bg-white/5 border border-white/10 focus:border-[#C9A44C]/50 text-white placeholder-white/25 rounded-sm px-4 py-3 text-sm outline-none transition-colors duration-200 resize-none"
+                    style={{ fontFamily: "var(--font-body)" }}
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="inline-flex items-center justify-center gap-2 bg-[#C9A44C] hover:bg-[#D4B76A] text-[#090909] font-semibold px-6 py-4 rounded-sm text-sm transition-colors duration-200 cursor-pointer mt-1"
+                  style={{ fontFamily: "var(--font-heading)" }}
+                >
+                  <Send className="w-4 h-4" />
+                  Enviar Consulta
+                </button>
+              </form>
+            )}
+          </AnimatedSection>
+
+          {/* Info */}
+          <AnimatedSection direction="left" className="flex flex-col gap-8">
+            <div>
+              <h3
+                className="text-white font-semibold text-lg mb-6"
+                style={{ fontFamily: "var(--font-heading)" }}
+              >
+                Información de Contacto
+              </h3>
+              <div className="flex flex-col gap-5">
+                {[
+                  {
+                    icon: MapPin,
+                    label: "Dirección",
+                    value: "Tegucigalpa, Francisco Morazán, Honduras",
+                  },
+                  {
+                    icon: Phone,
+                    label: "Teléfono",
+                    value: "+504 0000-0000",
+                  },
+                  {
+                    icon: Mail,
+                    label: "Correo",
+                    value: "info@legalforcohn.com",
+                  },
+                  {
+                    icon: Clock,
+                    label: "Horario",
+                    value: "Lun – Vie: 8:00am – 6:00pm | Emergencias: 24/7",
+                  },
+                ].map(({ icon: Icon, label, value }) => (
+                  <div key={label} className="flex gap-4">
+                    <div className="w-10 h-10 rounded-sm bg-[#C9A44C]/10 flex items-center justify-center shrink-0">
+                      <Icon className="w-5 h-5 text-[#C9A44C]" strokeWidth={1.5} />
+                    </div>
+                    <div>
+                      <div
+                        className="text-white/40 text-xs mb-0.5"
+                        style={{ fontFamily: "var(--font-body)" }}
+                      >
+                        {label}
+                      </div>
+                      <div
+                        className="text-white text-sm"
+                        style={{ fontFamily: "var(--font-body)" }}
+                      >
+                        {value}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* WhatsApp CTA */}
+            <a
+              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+                "Hola, me gustaría agendar una consulta legal con Legal Force HN."
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-4 card-glass rounded-sm p-5 hover:border-[#25D366]/30 transition-all duration-300 cursor-pointer group"
+            >
+              <div className="w-12 h-12 rounded-full bg-[#25D366]/15 flex items-center justify-center shrink-0 group-hover:bg-[#25D366]/25 transition-colors duration-200">
+                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="#25D366">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                  <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.534 5.855L0 24l6.336-1.51A11.946 11.946 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.809 9.809 0 01-5.012-1.378l-.36-.214-3.76.897.942-3.663-.235-.375A9.784 9.784 0 012.182 12C2.182 6.568 6.568 2.182 12 2.182S21.818 6.568 21.818 12 17.432 21.818 12 21.818z" />
+                </svg>
+              </div>
+              <div>
+                <div
+                  className="text-white font-semibold text-sm"
+                  style={{ fontFamily: "var(--font-heading)" }}
+                >
+                  Escríbenos por WhatsApp
+                </div>
+                <div
+                  className="text-white/40 text-xs mt-0.5"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  Respuesta inmediata · Chat confidencial
+                </div>
+              </div>
+            </a>
+
+            {/* Map placeholder */}
+            <div className="rounded-sm overflow-hidden border border-white/5 h-48 bg-[#161616] flex items-center justify-center">
+              <div className="text-center">
+                <MapPin className="w-8 h-8 text-[#C9A44C]/40 mx-auto mb-2" />
+                <span
+                  className="text-white/30 text-xs"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  Tegucigalpa, Honduras
+                </span>
+              </div>
+            </div>
+          </AnimatedSection>
+        </div>
+      </div>
+    </section>
+  );
+}
