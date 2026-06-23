@@ -207,7 +207,7 @@ export function ContactSection() {
                       type="tel"
                       value={form.phone}
                       onChange={handleChange}
-                      placeholder="+504 0000-0000"
+                      placeholder="+504 9820-6681"
                       className="bg-white/[0.04] border border-white/[0.08] focus:border-[#C9A44C]/50 text-[#F5F0E8] placeholder-[#F5F0E8]/20 px-4 py-3 text-sm outline-none transition-colors duration-200"
                       style={{ fontFamily: "var(--font-body)" }}
                     />
