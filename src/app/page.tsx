@@ -2,10 +2,14 @@ import dynamic from "next/dynamic";
 import { Navbar } from "@/components/layout/Navbar";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { Statistics } from "@/components/sections/Statistics";
+import { ReadingProgressBar } from "@/components/ui/ReadingProgressBar";
+import { MarqueeStrip } from "@/components/ui/MarqueeStrip";
 
-// Lazy-load below-fold sections
 const PracticeAreas = dynamic(() =>
   import("@/components/sections/PracticeAreas").then((m) => ({ default: m.PracticeAreas }))
+);
+const CaseEvaluator = dynamic(() =>
+  import("@/components/sections/CaseEvaluator").then((m) => ({ default: m.CaseEvaluator }))
 );
 const StrategySection = dynamic(() =>
   import("@/components/sections/StrategySection").then((m) => ({ default: m.StrategySection }))
@@ -29,11 +33,14 @@ const FloatingWhatsApp = dynamic(() =>
 export default function Home() {
   return (
     <>
+      <ReadingProgressBar />
       <Navbar />
       <main>
         <HeroSection />
+        <MarqueeStrip />
         <Statistics />
         <PracticeAreas />
+        <CaseEvaluator />
         <StrategySection />
         <Testimonials />
         <BlogSection />

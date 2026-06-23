@@ -1,17 +1,19 @@
 import type { Metadata } from "next";
-import { Poppins, Inter } from "next/font/google";
+import { Cormorant_Garamond, Montserrat } from "next/font/google";
 import "./globals.css";
 
-const poppins = Poppins({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["600", "700", "800"],
-  variable: "--font-poppins",
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-cormorant",
   display: "swap",
 });
 
-const inter = Inter({
+const montserrat = Montserrat({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-montserrat",
   display: "swap",
 });
 
@@ -37,7 +39,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${poppins.variable} ${inter.variable}`}>
+    <html lang="es" className={`${cormorant.variable} ${montserrat.variable}`}>
       <body className="min-h-screen flex flex-col">{children}</body>
     </html>
   );

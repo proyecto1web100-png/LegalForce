@@ -12,9 +12,30 @@ const navLinks = [
   { label: "Contacto", href: "#contacto" },
 ];
 
+function useAvailability() {
+  const [online, setOnline] = useState(false);
+
+  useEffect(() => {
+    const check = () => {
+      const now = new Date();
+      const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+      const hn = new Date(utc + -6 * 60 * 60000);
+      const day = hn.getDay();
+      const hour = hn.getHours();
+      setOnline(day >= 1 && day <= 5 && hour >= 8 && hour < 18);
+    };
+    check();
+    const id = setInterval(check, 60000);
+    return () => clearInterval(id);
+  }, []);
+
+  return online;
+}
+
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const online = useAvailability();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -33,7 +54,7 @@ export function Navbar() {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
           scrolled
-            ? "bg-[#090909]/95 backdrop-blur-md border-b border-white/5 py-3"
+            ? "bg-[#090909]/96 border-b border-white/[0.06] py-3"
             : "bg-transparent py-5"
         )}
       >
@@ -44,13 +65,16 @@ export function Navbar() {
             className="flex items-center gap-2.5 cursor-pointer"
             aria-label="Legal Force HN inicio"
           >
-            <div className="w-8 h-8 rounded-sm bg-[#C9A44C] flex items-center justify-center">
-              <Scale className="w-4 h-4 text-[#090909]" strokeWidth={2} />
+            <div className="w-8 h-8 bg-[#C9A44C] flex items-center justify-center">
+              <Scale className="w-4 h-4 text-[#050505]" strokeWidth={2} />
             </div>
-            <span className="text-lg tracking-tight" style={{ fontFamily: "var(--font-heading)" }}>
-              <span className="text-white font-bold">Legal</span>
+            <span
+              className="text-lg tracking-tight"
+              style={{ fontFamily: "var(--font-heading)" }}
+            >
+              <span className="text-[#F5F0E8] font-bold">Legal</span>
               <span className="text-[#C9A44C] font-bold">Force</span>
-              <span className="text-white/50 text-sm font-normal ml-1">HN</span>
+              <span className="text-[#F5F0E8]/40 text-sm font-normal ml-1">HN</span>
             </span>
           </button>
 
@@ -60,7 +84,7 @@ export function Navbar() {
               <button
                 key={link.href}
                 onClick={() => handleNav(link.href)}
-                className="text-sm text-white/60 hover:text-white transition-colors duration-200 cursor-pointer"
+                className="text-sm text-[#F5F0E8]/50 hover:text-[#F5F0E8] transition-colors duration-200 cursor-pointer"
                 style={{ fontFamily: "var(--font-body)" }}
               >
                 {link.label}
@@ -68,17 +92,38 @@ export function Navbar() {
             ))}
           </nav>
 
-          {/* CTA + mobile toggle */}
-          <div className="flex items-center gap-3">
+          {/* Availability + CTA */}
+          <div className="flex items-center gap-4">
+            {/* Availability indicator — desktop only */}
+            <div className="hidden sm:flex items-center gap-2">
+              <span
+                className="w-1.5 h-1.5 rounded-full"
+                style={{
+                  background: online ? "#4ade80" : "#F59E0B",
+                  animation: online ? "dot-pulse 2s ease-in-out infinite" : "none",
+                }}
+              />
+              <span
+                className="text-[10px] tracking-wide"
+                style={{
+                  fontFamily: "var(--font-body)",
+                  color: online ? "rgba(74,222,128,0.7)" : "rgba(245,158,11,0.7)",
+                }}
+              >
+                {online ? "Disponibles ahora" : "Respuesta en &lt;2h"}
+              </span>
+            </div>
+
             <button
               onClick={() => handleNav("#contacto")}
-              className="hidden sm:inline-flex items-center gap-2 bg-[#C9A44C] hover:bg-[#D4B76A] text-[#090909] text-sm font-semibold px-5 py-2.5 rounded-sm transition-colors duration-200 cursor-pointer"
-              style={{ fontFamily: "var(--font-heading)" }}
+              className="hidden sm:inline-flex items-center gap-2 bg-[#C9A44C] hover:bg-[#D4B76A] text-[#050505] text-xs font-semibold px-5 py-2.5 tracking-wide transition-colors duration-200 cursor-pointer"
+              style={{ fontFamily: "var(--font-body)" }}
             >
               Contáctanos
             </button>
+
             <button
-              className="lg:hidden p-2 text-white/70 hover:text-white cursor-pointer"
+              className="lg:hidden p-2 text-[#F5F0E8]/60 hover:text-[#F5F0E8] cursor-pointer"
               onClick={() => setOpen((v) => !v)}
               aria-label="Abrir menú"
             >
@@ -91,26 +136,44 @@ export function Navbar() {
       {/* Mobile menu */}
       {open && (
         <div
-          className="fixed inset-0 z-40 bg-[#090909]/98 backdrop-blur-lg flex flex-col pt-24 px-6 pb-8"
+          className="fixed inset-0 z-40 bg-[#050505]/98 flex flex-col pt-24 px-6 pb-8"
           style={{ animation: "menu-in 0.22s ease both" }}
         >
-          <nav className="flex flex-col gap-2">
+          {/* Mobile availability */}
+          <div className="flex items-center gap-2 mb-6">
+            <span
+              className="w-1.5 h-1.5 rounded-full"
+              style={{ background: online ? "#4ade80" : "#F59E0B" }}
+            />
+            <span
+              className="text-[10px] tracking-wide"
+              style={{
+                fontFamily: "var(--font-body)",
+                color: online ? "rgba(74,222,128,0.6)" : "rgba(245,158,11,0.6)",
+              }}
+            >
+              {online ? "Disponibles ahora" : "Respuesta en menos de 2h"}
+            </span>
+          </div>
+
+          <nav className="flex flex-col gap-1">
             {navLinks.map((link) => (
               <button
                 key={link.href}
                 onClick={() => handleNav(link.href)}
-                className="text-left text-xl font-medium text-white/70 hover:text-white py-3 border-b border-white/5 cursor-pointer transition-colors duration-150"
+                className="text-left text-2xl font-medium text-[#F5F0E8]/65 hover:text-[#F5F0E8] py-3 border-b border-white/[0.05] cursor-pointer transition-colors duration-150"
                 style={{ fontFamily: "var(--font-heading)" }}
               >
                 {link.label}
               </button>
             ))}
           </nav>
+
           <div className="mt-8">
             <button
               onClick={() => handleNav("#contacto")}
-              className="w-full bg-[#C9A44C] hover:bg-[#D4B76A] text-[#090909] font-semibold py-4 rounded-sm transition-colors duration-200 cursor-pointer"
-              style={{ fontFamily: "var(--font-heading)" }}
+              className="w-full bg-[#C9A44C] hover:bg-[#D4B76A] text-[#050505] font-semibold py-4 text-sm tracking-wide transition-colors duration-200 cursor-pointer"
+              style={{ fontFamily: "var(--font-body)" }}
             >
               Contáctanos
             </button>

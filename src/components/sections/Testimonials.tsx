@@ -41,8 +41,8 @@ export function Testimonials() {
               ))}
             </div>
             <p
-              className="text-white/65 text-base leading-relaxed"
-              style={{ fontFamily: "var(--font-body)" }}
+              className="text-[#F5F0E8]/60 leading-relaxed italic"
+              style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(1.1rem, 2vw, 1.3rem)" }}
             >
               &ldquo;Legal Force HN me representó en un caso penal muy complejo. Su equipo fue
               profesional, estratégico y siempre estuvo disponible. El resultado fue mejor del

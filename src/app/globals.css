@@ -4,20 +4,19 @@
   --color-gold: #C9A44C;
   --color-gold-light: #D4B76A;
   --color-gold-dark: #A8853A;
-  --color-dark: #090909;
-  --color-surface: #0f0f0f;
-  --color-surface-2: #161616;
-  --color-surface-3: #1e1e1e;
-  --color-muted: #888888;
-  --color-muted-2: #555555;
+  --color-dark: #050505;
+  --color-surface: #0d0d0d;
+  --color-surface-2: #141414;
+  --color-surface-3: #1a1a1a;
+  --color-cream: #F5F0E8;
 
-  --font-heading: var(--font-poppins), 'Poppins', sans-serif;
-  --font-body: var(--font-inter), 'Inter', sans-serif;
+  --font-heading: var(--font-cormorant), 'Cormorant Garamond', serif;
+  --font-body: var(--font-montserrat), 'Montserrat', sans-serif;
 }
 
 :root {
   --background: #090909;
-  --foreground: #ffffff;
+  --foreground: #F5F0E8;
 }
 
 @theme inline {
@@ -38,57 +37,55 @@ body {
   overflow-x: hidden;
 }
 
-/* Gold divider — signature element */
+/* Gold dividers */
 .gold-rule {
   display: block;
   width: 3rem;
-  height: 2px;
+  height: 1px;
   background: #C9A44C;
-  border-radius: 9999px;
 }
 
 .gold-rule-lg {
   display: block;
   width: 5rem;
-  height: 2px;
+  height: 1px;
   background: linear-gradient(90deg, #C9A44C, #D4B76A, #C9A44C);
-  border-radius: 9999px;
 }
 
-/* Section heading style */
+/* Section heading label */
 .section-label {
-  font-family: var(--font-heading);
-  font-size: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
   font-weight: 600;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: #C9A44C;
 }
 
-/* Card glass effect */
+/* Card surface */
 .card-glass {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.025);
   border: 1px solid rgba(255, 255, 255, 0.07);
 }
 
-/* ── Scroll reveal (CSS-only, no animation library) ── */
+/* ── Scroll reveal ── */
 .reveal {
   opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 0.55s cubic-bezier(0.22,1,0.36,1),
-              transform 0.55s cubic-bezier(0.22,1,0.36,1);
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1),
+              transform 0.6s cubic-bezier(0.22,1,0.36,1);
 }
 .reveal-left {
   opacity: 0;
-  transform: translateX(-22px);
-  transition: opacity 0.55s cubic-bezier(0.22,1,0.36,1),
-              transform 0.55s cubic-bezier(0.22,1,0.36,1);
+  transform: translateX(-20px);
+  transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1),
+              transform 0.6s cubic-bezier(0.22,1,0.36,1);
 }
 .reveal-right {
   opacity: 0;
-  transform: translateX(22px);
-  transition: opacity 0.55s cubic-bezier(0.22,1,0.36,1),
-              transform 0.55s cubic-bezier(0.22,1,0.36,1);
+  transform: translateX(20px);
+  transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1),
+              transform 0.6s cubic-bezier(0.22,1,0.36,1);
 }
 .reveal.visible,
 .reveal-left.visible,
@@ -97,9 +94,25 @@ body {
   transform: none;
 }
 
+/* ── Marquee ── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
 /* ── Hero entrance ── */
 @keyframes hero-up {
-  from { opacity: 0; transform: translateY(22px); }
+  from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: none; }
 }
 @keyframes hero-in {
@@ -107,10 +120,10 @@ body {
   to   { opacity: 1; }
 }
 
-/* ── Chevron bounce ── */
-@keyframes chevron-bounce {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(6px); }
+/* ── Availability dot pulse ── */
+@keyframes dot-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
 }
 
 /* ── WhatsApp button ── */
@@ -119,13 +132,19 @@ body {
   to   { transform: scale(1); opacity: 1; }
 }
 @keyframes wa-pulse {
-  0%   { transform: scale(1);   opacity: 0.45; }
+  0%   { transform: scale(1);    opacity: 0.4; }
   100% { transform: scale(1.75); opacity: 0; }
 }
 
 /* ── Mobile menu ── */
 @keyframes menu-in {
-  from { opacity: 0; transform: translateY(-10px); }
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ── Accordion expand ── */
+@keyframes accordion-open {
+  from { opacity: 0; transform: translateY(-6px); }
   to   { opacity: 1; transform: none; }
 }
 
