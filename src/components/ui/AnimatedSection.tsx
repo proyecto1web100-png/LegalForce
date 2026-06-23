@@ -38,7 +38,7 @@ export function AnimatedSection({
           observer.unobserve(el);
         }
       },
-      { threshold: 0.08, rootMargin: "-48px 0px" }
+      { threshold: 0.05, rootMargin: "0px 0px" }
     );
 
     observer.observe(el);

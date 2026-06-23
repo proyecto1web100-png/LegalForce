@@ -1,11 +1,9 @@
 import dynamic from "next/dynamic";
 import { Navbar } from "@/components/layout/Navbar";
 import { HeroSection } from "@/components/sections/HeroSection";
+import { Statistics } from "@/components/sections/Statistics";
 
-// Lazy-load all below-fold sections to speed up initial render
-const Statistics = dynamic(() =>
-  import("@/components/sections/Statistics").then((m) => ({ default: m.Statistics }))
-);
+// Lazy-load below-fold sections
 const PracticeAreas = dynamic(() =>
   import("@/components/sections/PracticeAreas").then((m) => ({ default: m.PracticeAreas }))
 );

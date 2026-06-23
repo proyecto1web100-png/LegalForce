@@ -69,7 +69,6 @@ body {
 .card-glass {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(4px);
 }
 
 /* ── Scroll reveal (CSS-only, no animation library) ── */

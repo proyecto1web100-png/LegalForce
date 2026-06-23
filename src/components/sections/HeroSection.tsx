@@ -13,18 +13,14 @@ export function HeroSection() {
       id="inicio"
       className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-[#090909]"
     >
-      {/* Background grid */}
+      {/* Background ambient — radial gradients, no expensive CSS filter */}
       <div
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage:
-            "linear-gradient(#C9A44C 1px, transparent 1px), linear-gradient(90deg, #C9A44C 1px, transparent 1px)",
-          backgroundSize: "64px 64px",
+          background:
+            "radial-gradient(ellipse 700px 600px at -5% -10%, rgba(201,164,76,0.06) 0%, transparent 65%), radial-gradient(ellipse 500px 400px at 105% 110%, rgba(201,164,76,0.04) 0%, transparent 65%)",
         }}
       />
-      {/* Radial glows */}
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#C9A44C]/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[350px] h-[350px] bg-[#C9A44C]/3 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-28 pb-20">
         <div className="max-w-4xl">
