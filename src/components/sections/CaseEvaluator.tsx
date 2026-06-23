@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 
-const WHATSAPP_NUMBER = "50400000000";
+const WHATSAPP_NUMBER = "50498206681";
 
 const WA_ICON = (
   <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor">
@@ -15,37 +15,43 @@ const WA_ICON = (
 const options = [
   {
     label: "Acusación o proceso penal",
+    detail: "Detenciones, imputaciones, juicios penales, delitos económicos o contra la persona.",
     area: "Derecho Penal",
     waMsg: "Hola, necesito asesoría urgente en materia penal. ¿Pueden ayudarme?",
   },
   {
     label: "Problema laboral o despido",
+    detail: "Despido injustificado, prestaciones no pagadas, acoso laboral o negociación colectiva.",
     area: "Derecho Laboral",
     waMsg: "Hola, tengo un problema laboral y necesito asesoría legal.",
   },
   {
     label: "Contrato, propiedad o herencia",
+    detail: "Contratos civiles, compraventa, sucesiones, responsabilidad civil entre particulares.",
     area: "Derecho Civil",
     waMsg: "Hola, necesito asesoría en materia civil (contrato, propiedad o herencia).",
   },
   {
     label: "Trámite migratorio o visa",
+    detail: "Residencia temporal o permanente, ciudadanía, regularización migratoria en Honduras.",
     area: "Derecho Migratorio",
     waMsg: "Hola, necesito asesoría sobre trámites migratorios o de residencia.",
   },
   {
     label: "Impuestos, SAR o empresa",
+    detail: "Auditorías fiscales, recursos ante el SAR, cumplimiento tributario para personas y empresas.",
     area: "Derecho Tributario",
     waMsg: "Hola, necesito asesoría en materia tributaria o fiscal.",
   },
   {
     label: "Escritura, poder o autenticación",
+    detail: "Escrituras públicas, poderes notariales, autenticaciones y contratos con validez legal plena.",
     area: "Derecho Notarial",
     waMsg: "Hola, necesito servicios notariales (escritura, poder u otro instrumento legal).",
   },
 ];
 
-type Option = (typeof options)[0];
+type Option = (typeof options)[number];
 
 export function CaseEvaluator() {
   const [selected, setSelected] = useState<Option | null>(null);
@@ -82,16 +88,24 @@ export function CaseEvaluator() {
                 <button
                   key={opt.label}
                   onClick={() => setSelected(opt)}
-                  className="group text-left p-6 border border-white/[0.08] hover:border-[#C9A44C]/40 bg-white/[0.015] hover:bg-[#C9A44C]/[0.05] transition-all duration-250 cursor-pointer"
+                  className="group text-left p-6 border border-white/[0.08] hover:border-[#C9A44C]/40 bg-white/[0.015] hover:bg-[#C9A44C]/[0.05] transition-all duration-200 cursor-pointer flex flex-col justify-between min-h-[140px]"
                 >
+                  <div>
+                    <span
+                      className="block text-[#F5F0E8]/80 group-hover:text-[#F5F0E8] text-sm font-semibold leading-snug mb-3 transition-colors duration-200"
+                      style={{ fontFamily: "var(--font-heading)", fontSize: "1.05rem" }}
+                    >
+                      {opt.label}
+                    </span>
+                    <span
+                      className="block text-[#F5F0E8]/38 group-hover:text-[#F5F0E8]/55 text-xs leading-relaxed transition-colors duration-200"
+                      style={{ fontFamily: "var(--font-body)" }}
+                    >
+                      {opt.detail}
+                    </span>
+                  </div>
                   <span
-                    className="block text-[#F5F0E8]/65 group-hover:text-[#F5F0E8] text-sm leading-relaxed mb-3 transition-colors duration-200"
-                    style={{ fontFamily: "var(--font-body)" }}
-                  >
-                    {opt.label}
-                  </span>
-                  <span
-                    className="text-[#C9A44C]/0 group-hover:text-[#C9A44C]/70 text-[10px] uppercase tracking-widest transition-colors duration-200"
+                    className="mt-4 text-[#C9A44C]/50 group-hover:text-[#C9A44C] text-[10px] uppercase tracking-widest transition-colors duration-200"
                     style={{ fontFamily: "var(--font-body)" }}
                   >
                     → {opt.area}

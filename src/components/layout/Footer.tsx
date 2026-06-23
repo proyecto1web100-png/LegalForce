@@ -1,8 +1,8 @@
 "use client";
 
-import { Scale, Mail, Phone, MapPin } from "lucide-react";
+import { Scale, Phone, MapPin } from "lucide-react";
 
-const WHATSAPP_NUMBER = "50400000000";
+const WHATSAPP_NUMBER = "50498206681";
 
 const services = [
   "Derecho Penal",
@@ -155,9 +155,8 @@ export function Footer() {
             </h4>
             <ul className="flex flex-col gap-4">
               {[
-                { icon: MapPin, text: "Tegucigalpa, Honduras" },
-                { icon: Phone, text: "+504 0000-0000" },
-                { icon: Mail, text: "info@legalforcohn.com" },
+                { icon: MapPin, text: "San Pedro Sula, Cortés, Honduras" },
+                { icon: Phone, text: "+504 9820-6681" },
               ].map(({ icon: Icon, text }) => (
                 <li key={text} className="flex items-start gap-3">
                   <Icon className="w-4 h-4 text-[#C9A44C] mt-0.5 shrink-0" strokeWidth={1.5} />

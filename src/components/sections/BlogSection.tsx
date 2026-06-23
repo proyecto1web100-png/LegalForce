@@ -62,6 +62,7 @@ export function BlogSection() {
         <div className="flex flex-col gap-3">
           {posts.map((post, i) => (
             <AnimatedSection key={post.slug} delay={i * 0.08}>
+              <a href={`/blog/${post.slug}`} className="block">
               <article className="group card-glass rounded-sm px-6 py-5 hover:border-[#C9A44C]/25 transition-all duration-300 cursor-pointer flex flex-col sm:flex-row sm:items-center gap-4">
                 {/* Tag + date */}
                 <div className="flex items-center gap-3 sm:w-56 shrink-0">
@@ -90,6 +91,7 @@ export function BlogSection() {
                   <ArrowRight className="w-4 h-4 text-[#C9A44C]/50 group-hover:text-[#C9A44C] group-hover:translate-x-1 transition-all duration-200" />
                 </div>
               </article>
+              </a>
             </AnimatedSection>
           ))}
         </div>

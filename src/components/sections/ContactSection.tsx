@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle, Copy, Check } from "lucide-react";
+import { MapPin, Phone, Clock, Send, CheckCircle, Copy, Check } from "lucide-react";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 
-const WHATSAPP_NUMBER = "50400000000";
+const WHATSAPP_NUMBER = "50498206681";
 
 const subjects = [
   "Derecho Penal",
@@ -89,9 +89,8 @@ export function ContactSection() {
   };
 
   const contactItems = [
-    { icon: MapPin, label: "Dirección", value: "Tegucigalpa, Francisco Morazán, Honduras", copyable: false },
-    { icon: Phone, label: "Teléfono", value: "+504 0000-0000", copyable: true },
-    { icon: Mail, label: "Correo", value: "info@legalforcohn.com", copyable: true },
+    { icon: MapPin, label: "Dirección", value: "San Pedro Sula, Cortés, Honduras", copyable: false },
+    { icon: Phone, label: "Teléfono", value: "+504 9820-6681", copyable: true },
     { icon: Clock, label: "Horario", value: "Lun – Vie: 8:00am – 6:00pm | Emergencias: 24/7", copyable: false },
   ];
 
@@ -347,7 +346,7 @@ export function ContactSection() {
                   className="text-[#F5F0E8]/25 text-xs"
                   style={{ fontFamily: "var(--font-body)" }}
                 >
-                  Tegucigalpa, Honduras
+                  San Pedro Sula, Honduras
                 </span>
               </div>
             </div>
