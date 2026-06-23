@@ -69,6 +69,22 @@ export function ContactSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const lines = [
+      "*Nueva consulta desde el sitio web*",
+      "",
+      `*Nombre:* ${form.name}`,
+      `*Correo:* ${form.email}`,
+      form.phone ? `*Teléfono:* ${form.phone}` : null,
+      form.subject ? `*Área legal:* ${form.subject}` : null,
+      "",
+      "*Descripción del caso:*",
+      form.message,
+    ].filter(Boolean) as string[];
+
+    const msg = encodeURIComponent(lines.join("\n"));
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, "_blank", "noopener,noreferrer");
+
     setSent(true);
   };
 
