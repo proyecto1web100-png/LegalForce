@@ -49,14 +49,14 @@ export function ContactSection() {
             className="text-4xl sm:text-5xl font-bold text-white"
             style={{ fontFamily: "var(--font-heading)" }}
           >
-            Agenda Tu <span className="text-[#C9A44C]">Consulta</span>
+            <span className="text-[#C9A44C]">Contáctanos</span>
           </h2>
           <p
             className="text-white/45 text-base mt-4 max-w-xl mx-auto"
             style={{ fontFamily: "var(--font-body)" }}
           >
-            La primera consulta es confidencial. Cuéntanos tu caso y te
-            respondemos en menos de 24 horas.
+            Escríbenos y te responderemos en menos de 24 horas. Toda
+            comunicación es estrictamente confidencial.
           </p>
           <span className="gold-rule-lg mt-6 mx-auto block" />
         </AnimatedSection>
@@ -214,7 +214,7 @@ export function ContactSection() {
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
                   <Send className="w-4 h-4" />
-                  Enviar Consulta
+                  Enviar Mensaje
                 </button>
               </form>
             )}
@@ -278,7 +278,7 @@ export function ContactSection() {
             {/* WhatsApp CTA */}
             <a
               href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-                "Hola, me gustaría agendar una consulta legal con Legal Force HN."
+                "Hola, me gustaría obtener información sobre los servicios de Legal Force HN."
               )}`}
               target="_blank"
               rel="noopener noreferrer"

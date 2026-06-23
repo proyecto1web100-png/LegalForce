@@ -1,7 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 
 interface AnimatedSectionProps {
@@ -17,24 +16,38 @@ export function AnimatedSection({
   delay = 0,
   direction = "up",
 }: AnimatedSectionProps) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const ref = useRef<HTMLDivElement>(null);
 
-  const initial = {
-    opacity: 0,
-    y: direction === "up" ? 32 : 0,
-    x: direction === "left" ? -32 : direction === "right" ? 32 : 0,
-  };
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const cls =
+      direction === "left" ? "reveal-left"
+      : direction === "right" ? "reveal-right"
+      : direction === "none" ? ""
+      : "reveal";
+
+    if (cls) el.classList.add(cls);
+    if (delay) el.style.transitionDelay = `${delay}s`;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.classList.add("visible");
+          observer.unobserve(el);
+        }
+      },
+      { threshold: 0.08, rootMargin: "-48px 0px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [delay, direction]);
 
   return (
-    <motion.div
-      ref={ref}
-      className={cn(className)}
-      initial={initial}
-      animate={isInView ? { opacity: 1, y: 0, x: 0 } : initial}
-      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
-    >
+    <div ref={ref} className={cn(className)}>
       {children}
-    </motion.div>
+    </div>
   );
 }
