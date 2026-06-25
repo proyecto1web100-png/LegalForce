@@ -58,7 +58,7 @@ export function HeroSection() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(to right, rgba(5,5,5,0.75) 0%, transparent 22%, transparent 78%, rgba(5,5,5,0.75) 100%)",
+            "linear-gradient(to right, rgba(5,5,5,0.35) 0%, transparent 12%, transparent 88%, rgba(5,5,5,0.35) 100%)",
         }}
       />
       {/* Gold ambient */}
@@ -71,7 +71,7 @@ export function HeroSection() {
       />
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A44C]/20 to-transparent" />
       {/* Bottom fade to black */}
-      <div className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none" style={{ background: "linear-gradient(to bottom, transparent, #050505)" }} />
+      <div className="absolute bottom-0 left-0 right-0 h-72 pointer-events-none" style={{ background: "linear-gradient(to bottom, transparent, #050505 80%)" }} />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-24">
         {/* Label */}
