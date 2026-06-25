@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X, Scale } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
@@ -67,9 +67,11 @@ export function Navbar() {
             className="flex items-center gap-2.5 cursor-pointer"
             aria-label="Legal Force & Asociados inicio"
           >
-            <div className="w-8 h-8 bg-[#C9A44C] flex items-center justify-center">
-              <Scale className="w-4 h-4 text-[#050505]" strokeWidth={2} />
-            </div>
+            <img
+              src="/images/logo.jpg"
+              alt="Legal Force & Asociados"
+              className="w-9 h-9 object-cover rounded-sm"
+            />
             <span
               className="text-lg tracking-tight"
               style={{ fontFamily: "var(--font-heading)" }}

@@ -1,6 +1,6 @@
 "use client";
 
-import { Scale, Phone, MapPin } from "lucide-react";
+import { Phone, MapPin } from "lucide-react";
 
 const WHATSAPP_NUMBER = "50498206681";
 
@@ -37,9 +37,11 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2.5 mb-5">
-              <div className="w-8 h-8 rounded-sm bg-[#C9A44C] flex items-center justify-center">
-                <Scale className="w-4.5 h-4.5 text-[#090909]" strokeWidth={2} />
-              </div>
+              <img
+                src="/images/logo.jpg"
+                alt="Legal Force & Asociados"
+                className="w-9 h-9 object-cover rounded-sm"
+              />
               <span
                 className="font-heading font-700 text-lg tracking-tight"
                 style={{ fontFamily: "var(--font-heading)" }}
