@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 const WHATSAPP_NUMBER = "50498206681";
 const WHATSAPP_MSG = encodeURIComponent(
-  "Hola, me gustaría obtener información sobre los servicios de Legal Force HN."
+  "Hola, me gustaría obtener información sobre los servicios de Legal Force & Asociados."
 );
 
 const WA_ICON = (
@@ -32,9 +32,9 @@ function useConsultationCount() {
 }
 
 const lines = [
-  { words: ["La", "Justicia"], color: "text-[#F5F0E8]", italic: false },
-  { words: ["Es", "Nuestro"], color: "text-[#C9A44C]", italic: true },
-  { words: ["Oficio."], color: "text-[#F5F0E8]", italic: false },
+  { words: ["Legal", "Force"], color: "text-[#F5F0E8]", italic: false },
+  { words: ["Donde", "el", "derecho"], color: "text-[#F5F0E8]", italic: false },
+  { words: ["encuentra", "Justicia"], color: "text-[#C9A44C]", italic: true },
 ];
 
 export function HeroSection() {
