@@ -5,7 +5,7 @@ import { AnimatedSection } from "@/components/ui/AnimatedSection";
 
 export function Testimonials() {
   return (
-    <section className="py-16 bg-[#0f0f0f] border-t border-white/5">
+    <section className="py-8 bg-[#0f0f0f] border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6">
         <AnimatedSection className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left: heading */}

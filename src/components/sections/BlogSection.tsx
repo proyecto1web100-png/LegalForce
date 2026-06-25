@@ -35,7 +35,7 @@ const posts = [
 
 export function BlogSection() {
   return (
-    <section id="blog" className="py-16 bg-[#090909]">
+    <section id="blog" className="py-8 bg-[#090909]">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <AnimatedSection className="mb-8">

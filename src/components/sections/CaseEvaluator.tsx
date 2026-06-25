@@ -57,7 +57,7 @@ export function CaseEvaluator() {
   const [selected, setSelected] = useState<Option | null>(null);
 
   return (
-    <section className="py-20 border-y border-white/[0.06]" style={{ background: "#060606" }}>
+    <section className="py-10 border-y border-white/[0.06]" style={{ background: "#060606" }}>
       <div className="max-w-5xl mx-auto px-6">
         <AnimatedSection className="text-center mb-12">
           <span className="section-label block mb-5">Evaluador de Caso</span>

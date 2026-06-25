@@ -15,9 +15,9 @@ const WA_ICON = (
 );
 
 const lines = [
-  { words: ["Legal", "Force"], color: "text-[#F5F0E8]", italic: false },
-  { words: ["Donde", "el", "derecho"], color: "text-[#F5F0E8]", italic: false },
-  { words: ["encuentra", "Justicia"], color: "text-[#C9A44C]", italic: true },
+  { words: ["Legal", "Force"], color: "text-[#F5F0E8]", italic: false, size: "clamp(5.5rem, 14vw, 12rem)", spacing: "0.06em" },
+  { words: ["Donde", "el", "derecho"], color: "text-[#C9A44C]", italic: false, size: "clamp(2rem, 5vw, 4rem)", spacing: "0" },
+  { words: ["encuentra", "Justicia"], color: "text-[#C9A44C]", italic: true, size: "clamp(2rem, 5vw, 4rem)", spacing: "0" },
 ];
 
 export function HeroSection() {
@@ -89,7 +89,7 @@ export function HeroSection() {
             <span
               key={line.words.join("")}
               className="block"
-              style={{ fontSize: "clamp(3.8rem, 9.5vw, 8.5rem)" }}
+              style={{ fontSize: line.size, letterSpacing: line.spacing }}
             >
               {line.words.map((word) => {
                 const delay = 0.1 + wordIndex++ * 0.11;

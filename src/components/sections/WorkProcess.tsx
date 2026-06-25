@@ -36,10 +36,10 @@ const steps = [
 
 export function WorkProcess() {
   return (
-    <section id="proceso" className="py-24 bg-[#090909]">
+    <section id="proceso" className="py-12 bg-[#090909]">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
-        <AnimatedSection className="mb-16 text-center">
+        <AnimatedSection className="mb-8 text-center">
           <span className="section-label block mb-4">Nuestro Proceso</span>
           <h2
             className="text-4xl sm:text-5xl font-bold text-white leading-tight"

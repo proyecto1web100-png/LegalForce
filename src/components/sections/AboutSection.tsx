@@ -13,7 +13,7 @@ const values = [
 
 export function AboutSection() {
   return (
-    <section id="nosotros" className="relative py-20 bg-[#060606] overflow-hidden">
+    <section id="nosotros" className="relative py-10 bg-[#060606] overflow-hidden">
       {/* Background image — translucent */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -35,7 +35,7 @@ export function AboutSection() {
       <div className="relative max-w-7xl mx-auto px-6">
 
         {/* Header */}
-        <AnimatedSection className="mb-14">
+        <AnimatedSection className="mb-8">
           <span className="section-label block mb-5">El Despacho</span>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
             <h2

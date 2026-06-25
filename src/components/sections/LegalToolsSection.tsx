@@ -549,9 +549,9 @@ export function LegalToolsSection() {
   const ActiveComponent = tabs.find((t) => t.id === activeTab)!.component;
 
   return (
-    <section id="herramientas" className="py-20 bg-[#0a0a0a] border-y border-white/[0.05]">
+    <section id="herramientas" className="py-10 bg-[#0a0a0a] border-y border-white/[0.05]">
       <div className="max-w-4xl mx-auto px-6">
-        <AnimatedSection className="mb-10">
+        <AnimatedSection className="mb-6">
           <span className="section-label block mb-5">Centro de Recursos</span>
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
             <h2

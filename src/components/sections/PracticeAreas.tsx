@@ -171,7 +171,7 @@ export function PracticeAreas() {
   const [openTitle, setOpenTitle] = useState<string | null>(null);
 
   return (
-    <section id="servicios" className="py-20 bg-[#090909]">
+    <section id="servicios" className="py-10 bg-[#090909]">
       <div className="max-w-7xl mx-auto px-6">
         <AnimatedSection className="mb-12">
           <span className="section-label block mb-5">Áreas de Práctica</span>

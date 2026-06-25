@@ -19,7 +19,7 @@ const steps = [
 
 export function StrategySection() {
   return (
-    <section id="proceso" className="py-16 bg-[#0f0f0f] border-y border-white/5">
+    <section id="proceso" className="py-8 bg-[#0f0f0f] border-y border-white/5">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
 

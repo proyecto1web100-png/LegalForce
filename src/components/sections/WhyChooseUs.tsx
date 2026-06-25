@@ -38,11 +38,11 @@ export function WhyChooseUs() {
   return (
     <section
       id="nosotros"
-      className="py-24 bg-[#0f0f0f] border-y border-white/5"
+      className="py-12 bg-[#0f0f0f] border-y border-white/5"
     >
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
-        <AnimatedSection className="mb-16 max-w-2xl">
+        <AnimatedSection className="mb-8 max-w-2xl">
           <span className="section-label block mb-4">¿Por qué elegirnos?</span>
           <h2
             className="text-4xl sm:text-5xl font-bold text-white leading-tight"

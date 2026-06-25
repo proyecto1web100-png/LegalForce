@@ -28,7 +28,7 @@ export function ConfidentialitySection() {
   return (
     <section
       ref={ref}
-      className="py-24 relative overflow-hidden"
+      className="py-12 relative overflow-hidden"
       style={{ background: "#050505" }}
     >
       {/* Ambient */}

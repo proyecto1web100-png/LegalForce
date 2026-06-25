@@ -37,7 +37,7 @@ export function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-20 bg-[#0a0a0a] border-t border-white/[0.04]">
+    <section id="faq" className="py-10 bg-[#0a0a0a] border-t border-white/[0.04]">
       <div className="max-w-4xl mx-auto px-6">
         <AnimatedSection className="mb-14 text-center">
           <span className="section-label block mb-5">Preguntas Frecuentes</span>

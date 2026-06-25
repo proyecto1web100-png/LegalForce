@@ -78,8 +78,8 @@ export function SpotlightReel() {
   };
 
   return (
-    <section className="py-20 bg-[#050505] overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 mb-10">
+    <section className="py-10 bg-[#050505] overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 mb-6">
         <AnimatedSection>
           <span className="section-label block mb-5">Nuestra Firma</span>
           <h2

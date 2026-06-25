@@ -14,10 +14,10 @@ const credentials = [
 
 export function TeamSection() {
   return (
-    <section id="equipo" className="py-20 bg-[#090909] border-t border-white/[0.04]">
+    <section id="equipo" className="py-10 bg-[#090909] border-t border-white/[0.04]">
       <div className="max-w-7xl mx-auto px-6">
 
-        <AnimatedSection className="mb-14">
+        <AnimatedSection className="mb-8">
           <span className="section-label block mb-5">Nuestro Equipo</span>
           <h2
             className="text-[#F5F0E8] font-medium leading-tight"

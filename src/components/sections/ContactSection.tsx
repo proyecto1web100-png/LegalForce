@@ -96,9 +96,9 @@ export function ContactSection() {
   ];
 
   return (
-    <section id="contacto" className="py-24 bg-[#0d0d0d] border-t border-white/[0.06]">
+    <section id="contacto" className="py-12 bg-[#0d0d0d] border-t border-white/[0.06]">
       <div className="max-w-7xl mx-auto px-6">
-        <AnimatedSection className="mb-16 text-center">
+        <AnimatedSection className="mb-8 text-center">
           <span className="section-label block mb-5">Contacto</span>
           <h2
             className="text-[#F5F0E8] font-medium"
