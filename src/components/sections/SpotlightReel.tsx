@@ -16,7 +16,7 @@ const cards = [
     waMsg: "Hola, quisiera conocer más sobre Legal Force & Asociados.",
   },
   {
-    img: "/images/ingvar-portrait-v2.jpg",
+    img: "/images/ingvar-formal.jpg",
     category: "Director General",
     title: "Ingvar Onassis\nLópez Hernández",
     tagline: "Abogado Penalista · Notario Público · Maestría en Criminología.",
@@ -77,7 +77,8 @@ export function SpotlightReel() {
         </AnimatedSection>
       </div>
 
-      <div className="relative">
+      {/* ── Mobile: horizontal scroll carousel ── */}
+      <div className="relative lg:hidden">
         <div
           ref={scrollRef}
           className="flex overflow-x-auto"
@@ -94,37 +95,18 @@ export function SpotlightReel() {
               className="relative flex-shrink-0 w-full"
               style={{ scrollSnapAlign: "start", height: "72vh", minHeight: "420px" }}
             >
-              {/* Mobile: full-width bg image (untouched) */}
               <div
-                className="absolute inset-0 lg:hidden"
+                className="absolute inset-0"
                 style={{
                   backgroundImage: `url('${asset(card.img)}')`,
                   backgroundSize: "cover",
                   backgroundPosition: "center top",
                 }}
               />
-              {/* Desktop: image on right 50% only */}
-              <div
-                className="hidden lg:block absolute top-0 right-0 bottom-0 w-[52%]"
-                style={{
-                  backgroundImage: `url('${asset(card.img)}')`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center top",
-                }}
-              />
-              {/* Desktop: solid dark left panel */}
-              <div className="hidden lg:block absolute top-0 left-0 bottom-0 w-[48%] bg-[#050505]" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-[#050505]/20" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#050505]/80 via-transparent to-transparent" />
 
-              {/* Mobile overlays */}
-              <div className="absolute inset-0 lg:hidden bg-gradient-to-t from-[#050505] via-[#050505]/60 to-[#050505]/20" />
-              <div className="absolute inset-0 lg:hidden bg-gradient-to-r from-[#050505]/80 via-transparent to-transparent" />
-              {/* Desktop: fade from left panel into image */}
-              <div className="hidden lg:block absolute top-0 bottom-0 left-[38%] w-[20%]" style={{ background: "linear-gradient(to right, #050505, transparent)" }} />
-              {/* Desktop: bottom fade */}
-              <div className="hidden lg:block absolute bottom-0 right-0 w-[52%] h-32" style={{ background: "linear-gradient(to top, #050505, transparent)" }} />
-
-              {/* Content */}
-              <div className="absolute inset-0 flex flex-col justify-between p-6 sm:p-10 max-w-3xl lg:max-w-lg">
+              <div className="absolute inset-0 flex flex-col justify-between p-6 sm:p-10 max-w-3xl">
                 <div>
                   <span
                     className="text-[#C9A44C] text-[9px] uppercase tracking-[0.2em] bg-[#050505]/60 px-3 py-1.5 border border-[#C9A44C]/25"
@@ -133,7 +115,6 @@ export function SpotlightReel() {
                     {card.category}
                   </span>
                 </div>
-
                 <div>
                   <div className="w-8 h-px bg-[#C9A44C]/60 mb-4" />
                   <h3
@@ -146,10 +127,7 @@ export function SpotlightReel() {
                   >
                     {card.title}
                   </h3>
-                  <p
-                    className="text-[#F5F0E8]/55 text-sm leading-relaxed mb-6 max-w-sm"
-                    style={{ fontFamily: "var(--font-body)" }}
-                  >
+                  <p className="text-[#F5F0E8]/55 text-sm leading-relaxed mb-6 max-w-sm" style={{ fontFamily: "var(--font-body)" }}>
                     {card.tagline}
                   </p>
                   <a
@@ -167,7 +145,6 @@ export function SpotlightReel() {
                 </div>
               </div>
 
-              {/* Card counter */}
               <div
                 className="absolute top-6 right-6 sm:top-10 sm:right-10 text-[#F5F0E8]/30 text-xs tabular-nums"
                 style={{ fontFamily: "var(--font-body)" }}
@@ -196,7 +173,8 @@ export function SpotlightReel() {
         </button>
       </div>
 
-      <div className="flex flex-col items-center gap-3 mt-6">
+      {/* Dots — mobile only */}
+      <div className="lg:hidden flex flex-col items-center gap-3 mt-6">
         <div className="flex items-center gap-2.5">
           {cards.map((_, i) => (
             <button
@@ -211,6 +189,80 @@ export function SpotlightReel() {
             />
           ))}
         </div>
+      </div>
+
+      {/* ── Desktop: 2×2 editorial grid ── */}
+      <div className="hidden lg:grid lg:grid-cols-2">
+        {cards.map((card, i) => (
+          <div
+            key={i}
+            className="relative overflow-hidden"
+            style={{ height: "56vh", minHeight: "380px" }}
+          >
+            {/* Background image */}
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: `url('${asset(card.img)}')`,
+                backgroundSize: "cover",
+                backgroundPosition: "center top",
+              }}
+            />
+            {/* Dark overlays */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/55 to-[#050505]/10" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#050505]/75 via-[#050505]/15 to-transparent" />
+
+            {/* Content */}
+            <div className="absolute inset-0 flex flex-col justify-between p-8">
+              <div className="flex items-start justify-between">
+                <span
+                  className="text-[#C9A44C] text-[9px] uppercase tracking-[0.2em] bg-[#050505]/60 px-3 py-1.5 border border-[#C9A44C]/25"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  {card.category}
+                </span>
+                <span
+                  className="text-[#F5F0E8]/25 text-xs tabular-nums"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  {String(i + 1).padStart(2, "0")} / {String(cards.length).padStart(2, "0")}
+                </span>
+              </div>
+
+              <div>
+                <div className="w-8 h-px bg-[#C9A44C]/60 mb-4" />
+                <h3
+                  className="text-[#F5F0E8] font-medium leading-tight mb-3 whitespace-pre-line"
+                  style={{
+                    fontFamily: "var(--font-heading)",
+                    fontSize: "clamp(1.6rem, 2.2vw, 2.4rem)",
+                    textShadow: "0 2px 20px rgba(0,0,0,0.95)",
+                  }}
+                >
+                  {card.title}
+                </h3>
+                <p
+                  className="text-[#F5F0E8]/50 text-sm leading-relaxed mb-5 max-w-xs"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  {card.tagline}
+                </p>
+                <a
+                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(card.waMsg)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-[#C9A44C] text-[10px] uppercase tracking-widest border-b border-[#C9A44C]/40 hover:border-[#C9A44C] pb-0.5 transition-all duration-200 cursor-pointer"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  Consultar
+                  <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
