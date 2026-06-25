@@ -42,7 +42,7 @@ export function HeroSection() {
           backgroundImage: "url('/images/ingvar-portrait-v2.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "right center",
-          opacity: 0.20,
+          opacity: 0.42,
         }}
       />
       {/* Gradient mask — hard dark on left, fades right */}

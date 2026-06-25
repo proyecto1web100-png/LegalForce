@@ -12,7 +12,6 @@ const cards = [
     category: "Identidad",
     title: "La Justicia\nes Nuestro Oficio",
     tagline: "Más de 15 años de litigación estratégica en Honduras.",
-    gradient: "from-[#050505]/85 via-[#1a1200]/50 to-transparent",
     waMsg: "Hola, quisiera conocer más sobre Legal Force & Asociados.",
   },
   {
@@ -20,7 +19,6 @@ const cards = [
     category: "Director General",
     title: "Ingvar Onassis\nLópez Hernández",
     tagline: "Abogado Penalista · Notario Público · Maestría en Criminología.",
-    gradient: "from-[#050505]/85 via-[#050505]/45 to-transparent",
     waMsg: "Hola, quisiera agendar una consulta con el Abog. Ingvar López.",
   },
   {
@@ -28,7 +26,6 @@ const cards = [
     category: "Asesoría Legal",
     title: "Tu Caso,\nNuestra Misión",
     tagline: "Atención personalizada desde la primera consulta.",
-    gradient: "from-[#050505]/85 via-[#050505]/40 to-transparent",
     waMsg: "Hola, necesito asesoría legal. ¿Pueden ayudarme?",
   },
   {
@@ -36,23 +33,12 @@ const cards = [
     category: "Fiscal · Tributario",
     title: "Estrategia\nFiscal Sólida",
     tagline: "Planificación, defensa ante el SAR y asesoría de empresas.",
-    gradient: "from-[#050505]/85 via-[#1a1000]/40 to-transparent",
     waMsg: "Hola, necesito asesoría en asuntos fiscales o tributarios.",
   },
 ];
 
-const FALLBACK_GRADIENTS = [
-  "linear-gradient(135deg, #1a0e00 0%, #0d0700 100%)",
-  "linear-gradient(135deg, #0a0a0a 0%, #1a1200 100%)",
-  "linear-gradient(135deg, #001a08 0%, #000d04 100%)",
-  "linear-gradient(135deg, #1a1000 0%, #0d0800 100%)",
-];
-
 export function SpotlightReel() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [imgStates, setImgStates] = useState<{ loaded: boolean; error: boolean }[]>(
-    cards.map(() => ({ loaded: false, error: false }))
-  );
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scrollTo = useCallback((index: number) => {
@@ -73,10 +59,6 @@ export function SpotlightReel() {
     return () => el.removeEventListener("scroll", onScroll);
   }, []);
 
-  const setImg = (i: number, patch: Partial<{ loaded: boolean; error: boolean }>) => {
-    setImgStates((prev) => prev.map((s, idx) => (idx === i ? { ...s, ...patch } : s)));
-  };
-
   return (
     <section className="py-10 bg-[#050505] overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 mb-6">
@@ -94,9 +76,7 @@ export function SpotlightReel() {
         </AnimatedSection>
       </div>
 
-      {/* Slider wrapper */}
       <div className="relative">
-        {/* Scroll container — full width, one card at a time */}
         <div
           ref={scrollRef}
           className="flex overflow-x-auto"
@@ -113,36 +93,21 @@ export function SpotlightReel() {
               className="relative flex-shrink-0 w-full"
               style={{ scrollSnapAlign: "start", height: "72vh", minHeight: "420px" }}
             >
-              {/* Image */}
-              {!imgStates[i].error && (
-                <img
-                  src={card.img}
-                  alt={card.title.replace("\n", " ")}
-                  className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ${
-                    imgStates[i].loaded ? "opacity-100" : "opacity-0"
-                  }`}
-                  onLoad={() => setImg(i, { loaded: true })}
-                  onError={() => setImg(i, { error: true })}
-                />
-              )}
-              {/* Fallback */}
+              {/* Background image via CSS */}
               <div
                 className="absolute inset-0"
                 style={{
-                  background: FALLBACK_GRADIENTS[i],
-                  opacity: imgStates[i].error || !imgStates[i].loaded ? 1 : 0,
-                  transition: "opacity 0.7s",
+                  backgroundImage: `url('${card.img}')`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
                 }}
               />
-
-              {/* Gradient overlays */}
-              <div className={`absolute inset-0 bg-gradient-to-t ${card.gradient}`} />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-60" />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#050505]/70 via-transparent to-transparent" />
+              {/* Dark overlays */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-[#050505]/20" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#050505]/80 via-transparent to-transparent" />
 
               {/* Content */}
               <div className="absolute inset-0 flex flex-col justify-between p-6 sm:p-10 max-w-3xl">
-                {/* Category badge */}
                 <div>
                   <span
                     className="text-[#C9A44C] text-[9px] uppercase tracking-[0.2em] bg-[#050505]/60 px-3 py-1.5 border border-[#C9A44C]/25"
@@ -152,7 +117,6 @@ export function SpotlightReel() {
                   </span>
                 </div>
 
-                {/* Text + CTA */}
                 <div>
                   <div className="w-8 h-px bg-[#C9A44C]/60 mb-4" />
                   <h3
@@ -197,7 +161,6 @@ export function SpotlightReel() {
           ))}
         </div>
 
-        {/* Prev / Next arrows */}
         <button
           onClick={() => scrollTo(Math.max(0, activeIndex - 1))}
           disabled={activeIndex === 0}
@@ -216,7 +179,6 @@ export function SpotlightReel() {
         </button>
       </div>
 
-      {/* Dots + progress bar */}
       <div className="flex flex-col items-center gap-3 mt-6">
         <div className="flex items-center gap-2.5">
           {cards.map((_, i) => (
