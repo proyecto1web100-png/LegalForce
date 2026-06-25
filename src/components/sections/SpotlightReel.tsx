@@ -93,21 +93,37 @@ export function SpotlightReel() {
               className="relative flex-shrink-0 w-full"
               style={{ scrollSnapAlign: "start", height: "72vh", minHeight: "420px" }}
             >
-              {/* Background image via CSS */}
+              {/* Mobile: full-width bg image (untouched) */}
               <div
-                className="absolute inset-0"
+                className="absolute inset-0 lg:hidden"
                 style={{
                   backgroundImage: `url('${card.img}')`,
                   backgroundSize: "cover",
-                  backgroundPosition: "center",
+                  backgroundPosition: "center top",
                 }}
               />
-              {/* Dark overlays */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-[#050505]/20" />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#050505]/80 via-transparent to-transparent" />
+              {/* Desktop: image on right 50% only */}
+              <div
+                className="hidden lg:block absolute top-0 right-0 bottom-0 w-[52%]"
+                style={{
+                  backgroundImage: `url('${card.img}')`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center top",
+                }}
+              />
+              {/* Desktop: solid dark left panel */}
+              <div className="hidden lg:block absolute top-0 left-0 bottom-0 w-[48%] bg-[#050505]" />
+
+              {/* Mobile overlays */}
+              <div className="absolute inset-0 lg:hidden bg-gradient-to-t from-[#050505] via-[#050505]/60 to-[#050505]/20" />
+              <div className="absolute inset-0 lg:hidden bg-gradient-to-r from-[#050505]/80 via-transparent to-transparent" />
+              {/* Desktop: fade from left panel into image */}
+              <div className="hidden lg:block absolute top-0 bottom-0 left-[38%] w-[20%]" style={{ background: "linear-gradient(to right, #050505, transparent)" }} />
+              {/* Desktop: bottom fade */}
+              <div className="hidden lg:block absolute bottom-0 right-0 w-[52%] h-32" style={{ background: "linear-gradient(to top, #050505, transparent)" }} />
 
               {/* Content */}
-              <div className="absolute inset-0 flex flex-col justify-between p-6 sm:p-10 max-w-3xl">
+              <div className="absolute inset-0 flex flex-col justify-between p-6 sm:p-10 max-w-3xl lg:max-w-lg">
                 <div>
                   <span
                     className="text-[#C9A44C] text-[9px] uppercase tracking-[0.2em] bg-[#050505]/60 px-3 py-1.5 border border-[#C9A44C]/25"
