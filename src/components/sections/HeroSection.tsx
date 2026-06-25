@@ -33,28 +33,38 @@ export function HeroSection() {
   return (
     <section
       id="inicio"
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center overflow-hidden"
       style={{ background: "#050505" }}
     >
-      {/* Background image — right side, editorial fade */}
+      {/* Background image — full on mobile, right-column on desktop */}
       <div
-        className="absolute right-0 top-0 bottom-0 w-full lg:w-[60%] pointer-events-none"
+        className="absolute inset-0 pointer-events-none"
         style={{
           backgroundImage: `url('${asset("/images/ingvar-portrait-v2.jpg")}')`,
           backgroundSize: "cover",
           backgroundPosition: "right center",
-          opacity: 0.40,
+          opacity: 0.42,
         }}
       />
-      {/* Gradient mask — soft left fade for text readability */}
+
+      {/* Desktop: solid dark left zone fading to transparent right */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 pointer-events-none hidden lg:block"
         style={{
           background:
-            "linear-gradient(to right, rgba(5,5,5,0.75) 0%, rgba(5,5,5,0.55) 40%, rgba(5,5,5,0.2) 70%, rgba(5,5,5,0.05) 100%)",
+            "linear-gradient(to right, #050505 0%, #050505 22%, rgba(5,5,5,0.93) 40%, rgba(5,5,5,0.55) 60%, rgba(5,5,5,0.12) 80%, transparent 100%)",
         }}
       />
-      {/* Soft left+right edge vignette */}
+      {/* Mobile gradient */}
+      <div
+        className="absolute inset-0 pointer-events-none lg:hidden"
+        style={{
+          background:
+            "linear-gradient(to right, rgba(5,5,5,0.85) 0%, rgba(5,5,5,0.65) 40%, rgba(5,5,5,0.3) 70%, rgba(5,5,5,0.1) 100%)",
+        }}
+      />
+
+      {/* Soft edge vignette */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -70,11 +80,16 @@ export function HeroSection() {
             "radial-gradient(ellipse 600px 500px at -8% 55%, rgba(201,164,76,0.045) 0%, transparent 62%)",
         }}
       />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A44C]/20 to-transparent" />
-      {/* Bottom fade to black */}
-      <div className="absolute bottom-0 left-0 right-0 h-72 pointer-events-none" style={{ background: "linear-gradient(to bottom, transparent, #050505 80%)" }} />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-24">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A44C]/20 to-transparent" />
+      <div
+        className="absolute bottom-0 left-0 right-0 h-72 pointer-events-none"
+        style={{ background: "linear-gradient(to bottom, transparent, #050505 80%)" }}
+      />
+
+      {/* ── Content ── */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-32 pb-20 lg:py-20">
+
         {/* Label */}
         <div
           className="flex items-center gap-4 mb-10"
@@ -89,8 +104,8 @@ export function HeroSection() {
           </span>
         </div>
 
-        {/* Headline — word-by-word reveal */}
-        <h1 className="leading-[0.92] mb-8" style={{ fontFamily: "var(--font-heading)" }}>
+        {/* Heading — full editorial width */}
+        <h1 className="leading-[0.92] mb-10" style={{ fontFamily: "var(--font-heading)" }}>
           {lines.map((line) => (
             <span
               key={line.words.join("")}
@@ -113,61 +128,68 @@ export function HeroSection() {
           ))}
         </h1>
 
-        {/* Subheading */}
-        <p
-          className="text-[#F5F0E8]/45 max-w-lg leading-relaxed mb-12"
-          style={{
-            fontFamily: "var(--font-body)",
-            fontSize: "clamp(0.82rem, 1.4vw, 0.95rem)",
-            animation: "hero-up 0.65s cubic-bezier(0.22,1,0.36,1) 0.55s both",
-          }}
-        >
-          Defensa jurídica estratégica. Soluciones legales con ética,
-          experiencia y compromiso. Firma hondureña especializada en litigación
-          estratégica y asesoría corporativa.
-        </p>
-
-        {/* CTAs */}
-        <div
-          className="flex flex-col sm:flex-row gap-4 mb-16"
-          style={{ animation: "hero-up 0.65s cubic-bezier(0.22,1,0.36,1) 0.66s both" }}
-        >
-          <a
-            href={`https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MSG}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2.5 bg-[#C9A44C] hover:bg-[#D4B76A] text-[#050505] font-semibold px-8 py-4 text-sm tracking-wide transition-colors duration-200 cursor-pointer"
-            style={{ fontFamily: "var(--font-body)" }}
-          >
-            {WA_ICON}
-            Escríbenos por WhatsApp
-          </a>
-          <button
-            onClick={() =>
-              document.querySelector("#servicios")?.scrollIntoView({ behavior: "smooth" })
-            }
-            className="inline-flex items-center justify-center gap-2 border border-[#F5F0E8]/12 hover:border-[#C9A44C]/50 text-[#F5F0E8]/60 hover:text-[#C9A44C] font-medium px-8 py-4 text-sm tracking-wide transition-all duration-200 cursor-pointer"
-            style={{ fontFamily: "var(--font-body)" }}
-          >
-            Ver Áreas de Práctica
-          </button>
-        </div>
-
-        {/* Trust badges */}
-        <div
-          className="flex flex-wrap items-center gap-3"
-          style={{ animation: "hero-in 0.6s ease 0.82s both" }}
-        >
-          {badges.map(({ icon: Icon, text }) => (
-            <div
-              key={text}
-              className="flex items-center gap-2.5 border border-white/[0.10] bg-white/[0.04] px-4 py-2.5 rounded-full text-[#F5F0E8]/60 text-xs tracking-wide"
-              style={{ fontFamily: "var(--font-body)" }}
+        {/* Below heading: left-column on desktop via 2-col grid */}
+        <div className="lg:grid lg:grid-cols-2">
+          <div>
+            {/* Subheading */}
+            <p
+              className="text-[#F5F0E8]/45 leading-relaxed mb-10 max-w-sm lg:max-w-md"
+              style={{
+                fontFamily: "var(--font-body)",
+                fontSize: "clamp(0.82rem, 1.4vw, 0.95rem)",
+                animation: "hero-up 0.65s cubic-bezier(0.22,1,0.36,1) 0.55s both",
+              }}
             >
-              <Icon className="w-4 h-4 text-[#C9A44C]/80 shrink-0" strokeWidth={1.5} />
-              <span>{text}</span>
+              Defensa jurídica estratégica. Soluciones legales con ética,
+              experiencia y compromiso. Firma hondureña especializada en litigación
+              estratégica y asesoría corporativa.
+            </p>
+
+            {/* CTAs */}
+            <div
+              className="flex flex-col sm:flex-row gap-4 mb-12"
+              style={{ animation: "hero-up 0.65s cubic-bezier(0.22,1,0.36,1) 0.66s both" }}
+            >
+              <a
+                href={`https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MSG}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2.5 bg-[#C9A44C] hover:bg-[#D4B76A] text-[#050505] font-semibold px-8 py-4 text-sm tracking-wide transition-colors duration-200 cursor-pointer"
+                style={{ fontFamily: "var(--font-body)" }}
+              >
+                {WA_ICON}
+                Escríbenos por WhatsApp
+              </a>
+              <button
+                onClick={() =>
+                  document.querySelector("#servicios")?.scrollIntoView({ behavior: "smooth" })
+                }
+                className="inline-flex items-center justify-center gap-2 border border-[#F5F0E8]/12 hover:border-[#C9A44C]/50 text-[#F5F0E8]/60 hover:text-[#C9A44C] font-medium px-8 py-4 text-sm tracking-wide transition-all duration-200 cursor-pointer"
+                style={{ fontFamily: "var(--font-body)" }}
+              >
+                Ver Áreas de Práctica
+              </button>
             </div>
-          ))}
+
+            {/* Trust badges */}
+            <div
+              className="flex flex-wrap items-center gap-3"
+              style={{ animation: "hero-in 0.6s ease 0.82s both" }}
+            >
+              {badges.map(({ icon: Icon, text }) => (
+                <div
+                  key={text}
+                  className="flex items-center gap-2.5 border border-white/[0.10] bg-white/[0.04] px-4 py-2.5 rounded-full text-[#F5F0E8]/60 text-xs tracking-wide"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  <Icon className="w-4 h-4 text-[#C9A44C]/80 shrink-0" strokeWidth={1.5} />
+                  <span>{text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          {/* Right column — empty, image shows through */}
+          <div className="hidden lg:block" />
         </div>
       </div>
 
