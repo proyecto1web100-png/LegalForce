@@ -197,72 +197,90 @@ export function PracticeAreas() {
           <span className="gold-rule-lg mt-6 block" />
         </AnimatedSection>
 
-        <div className="flex flex-col divide-y divide-white/[0.06]">
+        <div className="flex flex-col gap-3">
           {areas.map((area, i) => {
             const Icon = area.icon;
             const isOpen = openTitle === area.title;
 
             return (
               <AnimatedSection key={area.title} delay={i * 0.04}>
-                <div>
+                <div
+                  className={`border transition-all duration-300 ${
+                    isOpen
+                      ? "border-[#C9A44C]/40 bg-[#C9A44C]/[0.05]"
+                      : "border-white/[0.10] bg-white/[0.03] hover:border-[#C9A44C]/30 hover:bg-[#C9A44C]/[0.03]"
+                  }`}
+                >
                   <button
                     onClick={() => setOpenTitle(isOpen ? null : area.title)}
-                    className="w-full flex items-center justify-between py-5 px-1 group cursor-pointer text-left"
+                    className="w-full flex items-center justify-between px-4 py-4 group cursor-pointer text-left"
                     aria-expanded={isOpen}
                   >
                     <div className="flex items-center gap-4">
+                      {/* Gold accent line */}
+                      <div className={`w-0.5 h-10 shrink-0 transition-colors duration-300 ${isOpen ? "bg-[#C9A44C]" : "bg-white/10 group-hover:bg-[#C9A44C]/50"}`} />
+                      {/* Icon */}
                       <div
-                        className={`w-9 h-9 flex items-center justify-center transition-colors duration-300 ${
-                          isOpen
-                            ? "bg-[#C9A44C]/15"
-                            : "bg-white/[0.04] group-hover:bg-[#C9A44C]/10"
+                        className={`w-10 h-10 flex items-center justify-center shrink-0 transition-colors duration-300 ${
+                          isOpen ? "bg-[#C9A44C]/20" : "bg-white/[0.06] group-hover:bg-[#C9A44C]/10"
                         }`}
                       >
                         <Icon
-                          className={`w-4 h-4 transition-colors duration-300 ${
-                            isOpen
-                              ? "text-[#C9A44C]"
-                              : "text-[#F5F0E8]/30 group-hover:text-[#C9A44C]"
+                          className={`w-5 h-5 transition-colors duration-300 ${
+                            isOpen ? "text-[#C9A44C]" : "text-[#F5F0E8]/50 group-hover:text-[#C9A44C]"
                           }`}
                           strokeWidth={1.5}
                         />
                       </div>
-                      <span
-                        className={`font-medium transition-colors duration-200 ${
-                          isOpen
-                            ? "text-[#C9A44C]"
-                            : "text-[#F5F0E8]/75 group-hover:text-[#F5F0E8]"
-                        }`}
-                        style={{ fontFamily: "var(--font-heading)", fontSize: "1.2rem" }}
-                      >
-                        {area.title}
-                      </span>
+                      {/* Title + number */}
+                      <div>
+                        <span
+                          className="block text-[#F5F0E8]/30 mb-0.5"
+                          style={{ fontFamily: "var(--font-body)", fontSize: "0.6rem", letterSpacing: "0.15em" }}
+                        >
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <span
+                          className={`font-medium transition-colors duration-200 ${
+                            isOpen ? "text-[#C9A44C]" : "text-[#F5F0E8]/85 group-hover:text-[#F5F0E8]"
+                          }`}
+                          style={{ fontFamily: "var(--font-heading)", fontSize: "1.1rem" }}
+                        >
+                          {area.title}
+                        </span>
+                      </div>
                     </div>
-                    <ChevronDown
-                      className={`w-4 h-4 shrink-0 transition-all duration-300 ${
-                        isOpen
-                          ? "rotate-180 text-[#C9A44C]"
-                          : "text-[#F5F0E8]/20 group-hover:text-[#F5F0E8]/40"
-                      }`}
-                    />
+                    <div className="flex items-center gap-3 shrink-0">
+                      <span
+                        className={`hidden sm:block text-[10px] uppercase tracking-widest transition-colors duration-200 ${
+                          isOpen ? "text-[#C9A44C]" : "text-[#F5F0E8]/20 group-hover:text-[#C9A44C]/60"
+                        }`}
+                        style={{ fontFamily: "var(--font-body)" }}
+                      >
+                        {isOpen ? "Cerrar" : "Ver más"}
+                      </span>
+                      <ChevronDown
+                        className={`w-4 h-4 transition-all duration-300 ${
+                          isOpen ? "rotate-180 text-[#C9A44C]" : "text-[#F5F0E8]/25 group-hover:text-[#C9A44C]/60"
+                        }`}
+                      />
+                    </div>
                   </button>
 
                   {isOpen && (
                     <div
-                      className="pb-7 px-1 pl-[52px]"
+                      className="px-4 pb-5 pl-[4.25rem]"
                       style={{ animation: "accordion-open 0.22s ease both" }}
                     >
                       <MiniTimeline steps={area.steps} />
                       <p
-                        className="text-[#F5F0E8]/45 text-sm leading-relaxed mb-5"
+                        className="text-[#F5F0E8]/50 text-sm leading-relaxed mb-5"
                         style={{ fontFamily: "var(--font-body)" }}
                       >
                         {area.description}
                       </p>
                       <a
-                        href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-                          area.waMsg
-                        )}`}
+                        href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(area.waMsg)}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 bg-[#25D366]/[0.08] hover:bg-[#25D366]/15 border border-[#25D366]/20 hover:border-[#25D366]/40 text-[#25D366] text-xs font-semibold px-5 py-2.5 transition-all duration-200 cursor-pointer"
