@@ -6,7 +6,7 @@ const stats = [
   { value: 500, suffix: "+", label: "Casos Resueltos", description: "con éxito en Honduras" },
   { value: 98,  suffix: "%", label: "Satisfacción",    description: "de nuestros clientes" },
   { value: 24,  suffix: "/7", label: "Disponibilidad", description: "atención de emergencias" },
-  { value: 8,   suffix: "",   label: "Áreas Legales",  description: "de especialización" },
+  { value: 13,  suffix: "",   label: "Áreas Legales",  description: "de especialización" },
 ];
 
 function CountUp({ target, suffix, active }: { target: number; suffix: string; active: boolean }) {

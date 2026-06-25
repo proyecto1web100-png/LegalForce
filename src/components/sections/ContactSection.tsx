@@ -89,8 +89,9 @@ export function ContactSection() {
   };
 
   const contactItems = [
-    { icon: MapPin, label: "Dirección", value: "San Pedro Sula, Cortés, Honduras", copyable: false },
-    { icon: Phone, label: "Teléfono", value: "+504 9820-6681", copyable: true },
+    { icon: MapPin, label: "Dirección", value: "Plaza Galería 504, San Pedro Sula, Honduras", copyable: false },
+    { icon: Phone, label: "Teléfono principal", value: "+504 9820-6681", copyable: true },
+    { icon: Phone, label: "Teléfono secundario", value: "+504 9542-5353", copyable: true },
     { icon: Clock, label: "Horario", value: "Lun – Vie: 8:00am – 6:00pm | Emergencias: 24/7", copyable: false },
   ];
 
@@ -346,7 +347,7 @@ export function ContactSection() {
                   className="text-[#F5F0E8]/25 text-xs"
                   style={{ fontFamily: "var(--font-body)" }}
                 >
-                  San Pedro Sula, Honduras
+                  Plaza Galería 504, San Pedro Sula
                 </span>
               </div>
             </div>

@@ -112,8 +112,9 @@ export function HeroSection() {
             animation: "hero-up 0.65s cubic-bezier(0.22,1,0.36,1) 0.55s both",
           }}
         >
-          Más de una década protegiendo los derechos de nuestros clientes
-          en Honduras con estrategia, precisión y confidencialidad absoluta.
+          Defensa jurídica estratégica. Soluciones legales con ética,
+          experiencia y compromiso. Firma hondureña especializada en litigación
+          estratégica y asesoría corporativa.
         </p>
 
         {/* CTAs */}

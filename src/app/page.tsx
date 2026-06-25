@@ -5,6 +5,15 @@ import { Statistics } from "@/components/sections/Statistics";
 import { ReadingProgressBar } from "@/components/ui/ReadingProgressBar";
 import { MarqueeStrip } from "@/components/ui/MarqueeStrip";
 
+const AboutSection = dynamic(() =>
+  import("@/components/sections/AboutSection").then((m) => ({ default: m.AboutSection }))
+);
+const TeamSection = dynamic(() =>
+  import("@/components/sections/TeamSection").then((m) => ({ default: m.TeamSection }))
+);
+const SpotlightReel = dynamic(() =>
+  import("@/components/sections/SpotlightReel").then((m) => ({ default: m.SpotlightReel }))
+);
 const PracticeAreas = dynamic(() =>
   import("@/components/sections/PracticeAreas").then((m) => ({ default: m.PracticeAreas }))
 );
@@ -16,6 +25,9 @@ const LegalToolsSection = dynamic(() =>
 );
 const StrategySection = dynamic(() =>
   import("@/components/sections/StrategySection").then((m) => ({ default: m.StrategySection }))
+);
+const FAQSection = dynamic(() =>
+  import("@/components/sections/FAQSection").then((m) => ({ default: m.FAQSection }))
 );
 const ConfidentialitySection = dynamic(() =>
   import("@/components/sections/ConfidentialitySection").then((m) => ({ default: m.ConfidentialitySection }))
@@ -51,10 +63,14 @@ export default function Home() {
         <HeroSection />
         <MarqueeStrip />
         <Statistics />
+        <AboutSection />
+        <TeamSection />
+        <SpotlightReel />
         <PracticeAreas />
         <CaseEvaluator />
         <LegalToolsSection />
         <StrategySection />
+        <FAQSection />
         <ConfidentialitySection />
         <Testimonials />
         <BlogSection />

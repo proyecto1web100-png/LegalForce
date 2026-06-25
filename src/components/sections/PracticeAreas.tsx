@@ -11,6 +11,12 @@ import {
   Receipt,
   PenLine,
   ChevronDown,
+  Scale,
+  ShieldCheck,
+  Users,
+  TrendingUp,
+  Handshake,
+  Home,
 } from "lucide-react";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 
@@ -87,6 +93,54 @@ const areas = [
       "Escrituras públicas, autenticaciones, poderes notariales, contratos y toda clase de instrumentos legales con validez jurídica plena.",
     steps: ["Consulta", "Borrador legal", "Revisión", "Firma y registro"],
     waMsg: "Hola, necesito servicios notariales (escritura, poder u otro instrumento).",
+  },
+  {
+    icon: Scale,
+    title: "Derecho Constitucional",
+    description:
+      "Recursos de amparo, acciones de inconstitucionalidad y defensa de derechos fundamentales ante la Sala Constitucional de la Corte Suprema de Justicia.",
+    steps: ["Análisis constitucional", "Recurso de amparo", "Alegatos", "Resolución"],
+    waMsg: "Hola, necesito asesoría en Derecho Constitucional o un recurso de amparo.",
+  },
+  {
+    icon: Briefcase,
+    title: "Derecho Mercantil",
+    description:
+      "Constitución de empresas, contratos comerciales, fusiones, adquisiciones y asesoría corporativa integral para personas jurídicas nacionales e internacionales.",
+    steps: ["Diagnóstico", "Constitución legal", "Contratos", "Operación"],
+    waMsg: "Hola, necesito asesoría en Derecho Mercantil o constitución de empresa.",
+  },
+  {
+    icon: Users,
+    title: "Derecho de Familia",
+    description:
+      "Divorcios, custodia de menores, pensión alimenticia, adopciones, tutelas y todo el espectro del Derecho de Familia con sensibilidad y estrategia.",
+    steps: ["Consulta familiar", "Mediación", "Proceso judicial", "Acuerdo final"],
+    waMsg: "Hola, necesito asesoría en Derecho de Familia.",
+  },
+  {
+    icon: TrendingUp,
+    title: "Recuperación de Cartera",
+    description:
+      "Gestión y litigación para recuperación de deudas, cobros ejecutivos, embargos y ejecución de garantías tanto para personas como para instituciones financieras.",
+    steps: ["Análisis de cartera", "Notificación", "Proceso ejecutivo", "Cobro"],
+    waMsg: "Hola, necesito asesoría para recuperar una deuda o cartera morosa.",
+  },
+  {
+    icon: Handshake,
+    title: "Arbitraje y Conciliación",
+    description:
+      "Resolución alternativa de conflictos comerciales, laborales y civiles mediante arbitraje nacional e internacional y procesos de mediación extrajudicial.",
+    steps: ["Evaluación", "Designación de árbitros", "Audiencia", "Laudo final"],
+    waMsg: "Hola, quisiera información sobre arbitraje o conciliación para resolver un conflicto.",
+  },
+  {
+    icon: Home,
+    title: "Derecho Inmobiliario",
+    description:
+      "Compraventa de inmuebles, titulación, saneamiento legal, litigios de propiedad, desalojos y contratos de arrendamiento con respaldo jurídico completo.",
+    steps: ["Revisión de título", "Due diligence", "Contrato", "Registro"],
+    waMsg: "Hola, necesito asesoría en Derecho Inmobiliario o bienes raíces.",
   },
 ];
 

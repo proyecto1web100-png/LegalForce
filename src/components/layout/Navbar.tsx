@@ -6,8 +6,10 @@ import { cn } from "@/lib/utils";
 
 const navLinks = [
   { label: "Inicio", href: "#inicio" },
-  { label: "Servicios", href: "#servicios" },
   { label: "Nosotros", href: "#nosotros" },
+  { label: "Equipo", href: "#equipo" },
+  { label: "Servicios", href: "#servicios" },
+  { label: "Herramientas", href: "#herramientas" },
   { label: "Blog", href: "#blog" },
   { label: "Contacto", href: "#contacto" },
 ];
@@ -63,7 +65,7 @@ export function Navbar() {
           <button
             onClick={() => handleNav("#inicio")}
             className="flex items-center gap-2.5 cursor-pointer"
-            aria-label="Legal Force HN inicio"
+            aria-label="Legal Force & Asociados inicio"
           >
             <div className="w-8 h-8 bg-[#C9A44C] flex items-center justify-center">
               <Scale className="w-4 h-4 text-[#050505]" strokeWidth={2} />
@@ -74,7 +76,7 @@ export function Navbar() {
             >
               <span className="text-[#F5F0E8] font-bold">Legal</span>
               <span className="text-[#C9A44C] font-bold">Force</span>
-              <span className="text-[#F5F0E8]/40 text-sm font-normal ml-1">HN</span>
+              <span className="text-[#F5F0E8]/40 text-sm font-normal ml-1">&amp; Asociados</span>
             </span>
           </button>
 
