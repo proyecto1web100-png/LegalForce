@@ -9,42 +9,34 @@ const cards = [
   {
     img: "/images/hero-painting.jpg",
     category: "Identidad",
-    title: "Más de 15 Años\nde Litigación",
-    tagline: "Resultados que hablan por sí solos.",
-    gradient: "from-[#050505]/90 via-[#1a0e00]/60 to-transparent",
+    title: "La Justicia\nes Nuestro Oficio",
+    tagline: "Más de 15 años de litigación estratégica en Honduras.",
+    gradient: "from-[#050505]/90 via-[#1a1200]/60 to-transparent",
     waMsg: "Hola, quisiera conocer más sobre Legal Force & Asociados.",
   },
   {
     img: "/images/ingvar-portrait.jpg",
-    category: "Dirección",
+    category: "Director General",
     title: "Ingvar Onassis\nLópez Hernández",
-    tagline: "Director General · Abog. y Notario Público.",
-    gradient: "from-[#050505]/90 via-[#050505]/50 to-transparent",
+    tagline: "Abogado Penalista · Notario Público · Maestría en Criminología.",
+    gradient: "from-[#050505]/90 via-[#050505]/55 to-transparent",
     waMsg: "Hola, quisiera agendar una consulta con el Abog. Ingvar López.",
   },
   {
-    img: "/images/service-laboral.jpg",
-    category: "Derecho Laboral",
-    title: "Defensa de\nTus Derechos",
-    tagline: "Despidos, prestaciones y negociación colectiva.",
-    gradient: "from-[#050505]/90 via-[#0d1a0d]/50 to-transparent",
-    waMsg: "Hola, necesito asesoría en Derecho Laboral.",
+    img: "/images/ingvar-consulting.jpg",
+    category: "Asesoría Legal",
+    title: "Tu Caso,\nNuestra Misión",
+    tagline: "Atención personalizada desde la primera consulta.",
+    gradient: "from-[#050505]/90 via-[#050505]/50 to-transparent",
+    waMsg: "Hola, necesito asesoría legal. ¿Pueden ayudarme?",
   },
   {
     img: "/images/service-tributario.jpg",
-    category: "Derecho Tributario",
+    category: "Fiscal · Tributario",
     title: "Estrategia\nFiscal Sólida",
-    tagline: "Optimización y defensa ante el SAR.",
+    tagline: "Planificación, defensa ante el SAR y asesoría de empresas.",
     gradient: "from-[#050505]/90 via-[#1a1000]/50 to-transparent",
-    waMsg: "Hola, necesito asesoría tributaria o fiscal.",
-  },
-  {
-    img: "/images/service-notarial.jpg",
-    category: "Derecho Notarial",
-    title: "Instrumentos\ncon Validez Plena",
-    tagline: "Escrituras, poderes y contratos.",
-    gradient: "from-[#050505]/90 via-[#0a0a1a]/50 to-transparent",
-    waMsg: "Hola, necesito servicios notariales.",
+    waMsg: "Hola, necesito asesoría en asuntos fiscales o tributarios.",
   },
 ];
 
@@ -233,7 +225,7 @@ export function SpotlightReel() {
       </div>
 
       {/* Desktop: CSS grid with active card expanding */}
-      <div className="hidden lg:grid lg:grid-cols-4 gap-3 px-6 max-w-7xl mx-auto" style={{ gridAutoRows: "480px" }}>
+      <div className="hidden lg:grid lg:grid-cols-3 gap-3 px-6 max-w-7xl mx-auto" style={{ gridAutoRows: "480px" }}>
         {cards.map((card, i) => (
           <SpotlightCard
             key={i}
