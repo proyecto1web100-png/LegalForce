@@ -35,10 +35,9 @@ export function TeamSection() {
           {/* Photo */}
           <AnimatedSection className="relative">
             <div className="relative overflow-hidden bg-[#0d0d0d] border border-white/[0.06] aspect-[3/4] max-w-sm mx-auto lg:mx-0">
-              {/* Image — add /public/images/ingvar-portrait.jpg to activate */}
               <img
-                src="/images/ingvar-portrait.jpg"
-                alt="Abog. Ingvar Onassis López Hernández"
+                src="/images/ingvar-personal.jpg"
+                alt="Abog. Ingvar Onassis López Hernández frente al Poder Judicial"
                 className="w-full h-full object-cover object-top"
                 onError={(e) => {
                   (e.currentTarget as HTMLImageElement).style.display = "none";

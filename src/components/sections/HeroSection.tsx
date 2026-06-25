@@ -55,11 +55,35 @@ export function HeroSection() {
       className="relative min-h-screen flex flex-col justify-center overflow-hidden"
       style={{ background: "#050505" }}
     >
+      {/* Background image — right side, editorial fade */}
+      <div
+        className="absolute right-0 top-0 bottom-0 w-full lg:w-[60%] pointer-events-none"
+        style={{
+          backgroundImage: "url('/images/ingvar-portrait.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "right center",
+          opacity: 0.22,
+        }}
+      />
+      {/* Gradient mask — hard dark on left, fades right */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 800px 700px at -8% 55%, rgba(201,164,76,0.055) 0%, transparent 62%), radial-gradient(ellipse 600px 500px at 108% 20%, rgba(201,164,76,0.03) 0%, transparent 62%)",
+            "linear-gradient(to right, #050505 38%, rgba(5,5,5,0.94) 52%, rgba(5,5,5,0.55) 72%, rgba(5,5,5,0.15) 100%)",
+        }}
+      />
+      {/* Mobile: full overlay so text is always readable */}
+      <div
+        className="absolute inset-0 pointer-events-none lg:hidden"
+        style={{ background: "rgba(5,5,5,0.72)" }}
+      />
+      {/* Gold ambient */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 600px 500px at -8% 55%, rgba(201,164,76,0.045) 0%, transparent 62%)",
         }}
       />
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A44C]/20 to-transparent" />
