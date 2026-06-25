@@ -42,7 +42,7 @@ export function HeroSection() {
         style={{
           backgroundImage: `url('${asset("/images/ingvar-portrait-v2.jpg")}')`,
           backgroundSize: "cover",
-          backgroundPosition: "right center",
+          backgroundPosition: "right 15%",
           opacity: 0.42,
         }}
       />

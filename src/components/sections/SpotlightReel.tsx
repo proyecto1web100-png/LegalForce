@@ -38,7 +38,8 @@ const cards = [
   },
 ];
 
-const CARD_W = 400;
+const CARD_W = 390;
+const CARD_GAP = 16;
 
 export function SpotlightReel() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -63,9 +64,11 @@ export function SpotlightReel() {
     return () => el.removeEventListener("scroll", onScroll);
   }, []);
 
-  /* ── Desktop navigation ── */
-  const prev = () => setActiveIndex((i) => Math.max(0, i - 1));
-  const next = () => setActiveIndex((i) => Math.min(cards.length - 1, i + 1));
+  /* ── Desktop navigation (moves 2 cards at a time) ── */
+  const desktopPage = Math.floor(activeIndex / 2);
+  const desktopPages = Math.ceil(cards.length / 2);
+  const prev = () => setActiveIndex((i) => Math.max(0, i - 2));
+  const next = () => setActiveIndex((i) => Math.min(cards.length - 2, i + 2));
 
   return (
     <section className="py-10 bg-[#050505] overflow-hidden">
@@ -212,11 +215,11 @@ export function SpotlightReel() {
             <ChevronLeft className="w-5 h-5" />
           </button>
 
-          {/* Card viewport — clips overflow so only one card shows */}
-          <div className="overflow-hidden rounded-none" style={{ width: `${CARD_W}px` }}>
+          {/* Card viewport — shows 2 cards at a time */}
+          <div className="overflow-hidden" style={{ width: `${CARD_W * 2 + CARD_GAP}px` }}>
             <div
-              className="flex transition-transform duration-500 ease-out"
-              style={{ transform: `translateX(-${activeIndex * CARD_W}px)` }}
+              className="flex gap-4 transition-transform duration-500 ease-out"
+              style={{ transform: `translateX(-${activeIndex * (CARD_W + CARD_GAP)}px)` }}
             >
               {cards.map((card, i) => (
                 <div
@@ -295,18 +298,18 @@ export function SpotlightReel() {
           </button>
         </div>
 
-        {/* Desktop dots */}
+        {/* Desktop dots — one per page (2 pages) */}
         <div className="flex items-center gap-2.5">
-          {cards.map((_, i) => (
+          {Array.from({ length: desktopPages }).map((_, i) => (
             <button
               key={i}
-              onClick={() => setActiveIndex(i)}
+              onClick={() => setActiveIndex(i * 2)}
               className={`transition-all duration-300 cursor-pointer ${
-                i === activeIndex
+                i === desktopPage
                   ? "w-7 h-1.5 bg-[#C9A44C]"
                   : "w-1.5 h-1.5 rounded-full bg-white/20 hover:bg-white/40"
               }`}
-              aria-label={`Ir a imagen ${i + 1}`}
+              aria-label={`Página ${i + 1}`}
             />
           ))}
         </div>
