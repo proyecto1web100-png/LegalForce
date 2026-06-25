@@ -35,21 +35,22 @@ export function TeamSection() {
           {/* Photo */}
           <AnimatedSection className="relative">
             <div className="relative overflow-hidden bg-[#0d0d0d] border border-white/[0.06] aspect-[3/4] max-w-sm mx-auto lg:mx-0">
-              <img
-                src="/images/ingvar-personal.jpg"
-                alt="Abog. Ingvar Onassis López Hernández frente al Poder Judicial"
-                className="w-full h-full object-cover object-top"
-                onError={(e) => {
-                  (e.currentTarget as HTMLImageElement).style.display = "none";
-                }}
-              />
-              {/* Fallback placeholder shown when image missing */}
+              {/* Fallback — behind, only visible if image fails */}
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-[#0d0d0d]">
                 <div className="w-20 h-20 rounded-full bg-[#C9A44C]/10 border border-[#C9A44C]/20 flex items-center justify-center">
                   <span className="text-[#C9A44C] font-bold" style={{ fontFamily: "var(--font-heading)", fontSize: "2rem" }}>IL</span>
                 </div>
                 <span className="text-[#F5F0E8]/20 text-xs" style={{ fontFamily: "var(--font-body)" }}>Fotografía profesional</span>
               </div>
+              {/* Image — on top, covers fallback when loaded */}
+              <img
+                src="/images/ingvar-personal.jpg"
+                alt="Abog. Ingvar Onassis López Hernández frente al Poder Judicial"
+                className="absolute inset-0 w-full h-full object-cover object-top"
+                onError={(e) => {
+                  (e.currentTarget as HTMLImageElement).style.display = "none";
+                }}
+              />
               {/* Gold corner accent */}
               <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#C9A44C] to-[#D4B76A]" />
             </div>
