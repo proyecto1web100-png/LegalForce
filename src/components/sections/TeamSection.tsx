@@ -119,18 +119,6 @@ export function TeamSection() {
 
         </div>
 
-        {/* Team placeholder */}
-        <AnimatedSection>
-          <div className="border border-white/[0.04] bg-white/[0.01] p-8 text-center">
-            <p className="text-[#F5F0E8]/30 text-sm" style={{ fontFamily: "var(--font-body)" }}>
-              Contamos con un equipo multidisciplinario de abogados especializados en cada área de práctica.
-            </p>
-            <p className="text-[#C9A44C]/50 text-xs mt-2" style={{ fontFamily: "var(--font-body)" }}>
-              Perfiles adicionales del equipo próximamente.
-            </p>
-          </div>
-        </AnimatedSection>
-
       </div>
     </section>
   );
