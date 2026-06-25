@@ -1,7 +1,6 @@
 "use client";
 
-import { Shield, Clock, Star, Users } from "lucide-react";
-import { useState, useEffect } from "react";
+import { Shield, Clock, Star } from "lucide-react";
 
 const WHATSAPP_NUMBER = "50498206681";
 const WHATSAPP_MSG = encodeURIComponent(
@@ -15,22 +14,6 @@ const WA_ICON = (
   </svg>
 );
 
-function useConsultationCount() {
-  const [count, setCount] = useState<number | null>(null);
-  useEffect(() => {
-    const now = new Date();
-    const utcMs = now.getTime() + now.getTimezoneOffset() * 60000;
-    const hn = new Date(utcMs - 6 * 3600000);
-    const hour = hn.getHours();
-    const day = hn.getDay();
-    const isWeekday = day >= 1 && day <= 5;
-    const activeHours = isWeekday ? Math.max(0, Math.min(hour, 18) - 8) : 0;
-    const seed = hn.getDate() % 5;
-    setCount(7 + seed + Math.floor(activeHours * 1.3));
-  }, []);
-  return count;
-}
-
 const lines = [
   { words: ["Legal", "Force"], color: "text-[#F5F0E8]", italic: false },
   { words: ["Donde", "el", "derecho"], color: "text-[#F5F0E8]", italic: false },
@@ -38,13 +21,10 @@ const lines = [
 ];
 
 export function HeroSection() {
-  const count = useConsultationCount();
-
   const badges = [
     { icon: Shield, text: "Confidencialidad garantizada" },
     { icon: Clock, text: "Respuesta en 24 horas" },
     { icon: Star, text: "98% de satisfacción" },
-    ...(count !== null ? [{ icon: Users, text: `${count} consultas hoy` }] : []),
   ];
 
   let wordIndex = 0;
