@@ -22,7 +22,7 @@ export function AboutSection() {
           backgroundSize: "contain",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "right center",
-          opacity: 0.07,
+          opacity: 0.15,
         }}
       />
       {/* Subtle dark vignette on edges */}
