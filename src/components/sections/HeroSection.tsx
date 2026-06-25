@@ -42,7 +42,7 @@ export function HeroSection() {
           backgroundImage: "url('/images/ingvar-portrait-v2.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "right center",
-          opacity: 0.22,
+          opacity: 0.20,
         }}
       />
       {/* Gradient mask — hard dark on left, fades right */}
@@ -50,13 +50,8 @@ export function HeroSection() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(to right, #050505 38%, rgba(5,5,5,0.94) 52%, rgba(5,5,5,0.55) 72%, rgba(5,5,5,0.15) 100%)",
+            "linear-gradient(to right, #050505 35%, rgba(5,5,5,0.85) 50%, rgba(5,5,5,0.4) 70%, rgba(5,5,5,0.1) 100%)",
         }}
-      />
-      {/* Mobile: full overlay so text is always readable */}
-      <div
-        className="absolute inset-0 pointer-events-none lg:hidden"
-        style={{ background: "rgba(5,5,5,0.72)" }}
       />
       {/* Gold ambient */}
       <div
