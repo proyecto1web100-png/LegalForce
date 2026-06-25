@@ -8,7 +8,7 @@ const WHATSAPP_NUMBER = "50498206681";
 
 const cards = [
   {
-    img: "/images/hero-painting.jpg",
+    img: "/images/hero-painting-v2.jpg",
     category: "Identidad",
     title: "La Justicia\nes Nuestro Oficio",
     tagline: "Más de 15 años de litigación estratégica en Honduras.",
@@ -16,7 +16,7 @@ const cards = [
     waMsg: "Hola, quisiera conocer más sobre Legal Force & Asociados.",
   },
   {
-    img: "/images/ingvar-portrait.jpg",
+    img: "/images/ingvar-portrait-v2.jpg",
     category: "Director General",
     title: "Ingvar Onassis\nLópez Hernández",
     tagline: "Abogado Penalista · Notario Público · Maestría en Criminología.",
@@ -24,7 +24,7 @@ const cards = [
     waMsg: "Hola, quisiera agendar una consulta con el Abog. Ingvar López.",
   },
   {
-    img: "/images/ingvar-consulting.jpg",
+    img: "/images/ingvar-consulting-v2.jpg",
     category: "Asesoría Legal",
     title: "Tu Caso,\nNuestra Misión",
     tagline: "Atención personalizada desde la primera consulta.",
@@ -32,7 +32,7 @@ const cards = [
     waMsg: "Hola, necesito asesoría legal. ¿Pueden ayudarme?",
   },
   {
-    img: "/images/service-tributario.jpg",
+    img: "/images/service-tributario-v2.jpg",
     category: "Fiscal · Tributario",
     title: "Estrategia\nFiscal Sólida",
     tagline: "Planificación, defensa ante el SAR y asesoría de empresas.",

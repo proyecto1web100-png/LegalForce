@@ -39,7 +39,7 @@ export function HeroSection() {
       <div
         className="absolute right-0 top-0 bottom-0 w-full lg:w-[60%] pointer-events-none"
         style={{
-          backgroundImage: "url('/images/ingvar-portrait.jpg')",
+          backgroundImage: "url('/images/ingvar-portrait-v2.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "right center",
           opacity: 0.22,
