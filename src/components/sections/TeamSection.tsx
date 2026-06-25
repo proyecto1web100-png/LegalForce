@@ -44,7 +44,7 @@ export function TeamSection() {
               </div>
               {/* Image — on top, covers fallback when loaded */}
               <img
-                src="/images/ingvar-personal.jpg"
+                src="/images/ingvar-formal.jpg"
                 alt="Abog. Ingvar Onassis López Hernández frente al Poder Judicial"
                 className="absolute inset-0 w-full h-full object-cover object-top"
                 onError={(e) => {
