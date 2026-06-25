@@ -149,16 +149,16 @@ export function HeroSection() {
 
         {/* Trust badges */}
         <div
-          className="flex flex-wrap items-center gap-x-8 gap-y-3"
+          className="flex flex-wrap items-center gap-3"
           style={{ animation: "hero-in 0.6s ease 0.82s both" }}
         >
           {badges.map(({ icon: Icon, text }) => (
             <div
               key={text}
-              className="flex items-center gap-2 text-[#F5F0E8]/30 text-xs tracking-wide"
+              className="flex items-center gap-2.5 border border-white/[0.10] bg-white/[0.04] px-4 py-2.5 rounded-full text-[#F5F0E8]/60 text-xs tracking-wide"
               style={{ fontFamily: "var(--font-body)" }}
             >
-              <Icon className="w-3.5 h-3.5 text-[#C9A44C]/55" strokeWidth={1.5} />
+              <Icon className="w-4 h-4 text-[#C9A44C]/80 shrink-0" strokeWidth={1.5} />
               <span>{text}</span>
             </div>
           ))}
