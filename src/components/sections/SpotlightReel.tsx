@@ -38,10 +38,13 @@ const cards = [
   },
 ];
 
+const CARD_W = 400;
+
 export function SpotlightReel() {
   const [activeIndex, setActiveIndex] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  /* ── Mobile scroll sync ── */
   const scrollTo = useCallback((index: number) => {
     const el = scrollRef.current;
     if (!el) return;
@@ -60,6 +63,10 @@ export function SpotlightReel() {
     return () => el.removeEventListener("scroll", onScroll);
   }, []);
 
+  /* ── Desktop navigation ── */
+  const prev = () => setActiveIndex((i) => Math.max(0, i - 1));
+  const next = () => setActiveIndex((i) => Math.min(cards.length - 1, i + 1));
+
   return (
     <section className="py-10 bg-[#050505] overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 mb-6">
@@ -77,7 +84,7 @@ export function SpotlightReel() {
         </AnimatedSection>
       </div>
 
-      {/* ── Mobile: horizontal scroll carousel ── */}
+      {/* ══════════════ MOBILE: horizontal scroll carousel ══════════════ */}
       <div className="relative lg:hidden">
         <div
           ref={scrollRef}
@@ -173,13 +180,127 @@ export function SpotlightReel() {
         </button>
       </div>
 
-      {/* Dots — mobile only */}
-      <div className="lg:hidden flex flex-col items-center gap-3 mt-6">
+      {/* Mobile dots */}
+      <div className="lg:hidden flex justify-center gap-2.5 mt-6">
+        {cards.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => scrollTo(i)}
+            className={`transition-all duration-300 cursor-pointer ${
+              i === activeIndex
+                ? "w-7 h-1.5 bg-[#C9A44C]"
+                : "w-1.5 h-1.5 rounded-full bg-white/20 hover:bg-white/40"
+            }`}
+            aria-label={`Ir a imagen ${i + 1}`}
+          />
+        ))}
+      </div>
+
+      {/* ══════════════ DESKTOP: Instagram-style post slider ══════════════ */}
+      <div className="hidden lg:flex flex-col items-center gap-6 py-4">
+
+        {/* Slider row: arrow · card · arrow */}
+        <div className="flex items-center gap-8">
+
+          {/* Left arrow */}
+          <button
+            onClick={prev}
+            disabled={activeIndex === 0}
+            className="w-12 h-12 rounded-full bg-[#0d0d0d] border border-white/10 hover:border-[#C9A44C]/40 flex items-center justify-center text-white/40 hover:text-[#C9A44C] disabled:opacity-20 disabled:pointer-events-none transition-all duration-200 cursor-pointer flex-shrink-0"
+            aria-label="Anterior"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+
+          {/* Card viewport — clips overflow so only one card shows */}
+          <div className="overflow-hidden rounded-none" style={{ width: `${CARD_W}px` }}>
+            <div
+              className="flex transition-transform duration-500 ease-out"
+              style={{ transform: `translateX(-${activeIndex * CARD_W}px)` }}
+            >
+              {cards.map((card, i) => (
+                <div
+                  key={i}
+                  className="flex-shrink-0 bg-[#0d0d0d] border border-white/[0.08]"
+                  style={{ width: `${CARD_W}px` }}
+                >
+                  {/* Image — 4:5 portrait ratio */}
+                  <div
+                    style={{
+                      width: `${CARD_W}px`,
+                      aspectRatio: "4/5",
+                      backgroundImage: `url('${asset(card.img)}')`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center top",
+                    }}
+                  />
+
+                  {/* Caption */}
+                  <div className="p-5 border-t border-white/[0.06]">
+                    <div className="flex items-center justify-between mb-3">
+                      <span
+                        className="text-[#C9A44C] text-[9px] uppercase tracking-[0.2em] border border-[#C9A44C]/25 px-2.5 py-1"
+                        style={{ fontFamily: "var(--font-body)" }}
+                      >
+                        {card.category}
+                      </span>
+                      <span
+                        className="text-[#F5F0E8]/25 text-xs tabular-nums"
+                        style={{ fontFamily: "var(--font-body)" }}
+                      >
+                        {String(i + 1).padStart(2, "0")} / {String(cards.length).padStart(2, "0")}
+                      </span>
+                    </div>
+
+                    <div className="w-6 h-px bg-[#C9A44C]/50 mb-3" />
+
+                    <h3
+                      className="text-[#F5F0E8] font-medium leading-tight mb-2 whitespace-pre-line"
+                      style={{ fontFamily: "var(--font-heading)", fontSize: "1.45rem" }}
+                    >
+                      {card.title}
+                    </h3>
+                    <p
+                      className="text-[#F5F0E8]/45 text-xs leading-relaxed mb-4"
+                      style={{ fontFamily: "var(--font-body)" }}
+                    >
+                      {card.tagline}
+                    </p>
+                    <a
+                      href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(card.waMsg)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-[#C9A44C] text-[10px] uppercase tracking-widest border-b border-[#C9A44C]/40 hover:border-[#C9A44C] pb-0.5 transition-all duration-200 cursor-pointer"
+                      style={{ fontFamily: "var(--font-body)" }}
+                    >
+                      Consultar
+                      <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right arrow */}
+          <button
+            onClick={next}
+            disabled={activeIndex === cards.length - 1}
+            className="w-12 h-12 rounded-full bg-[#0d0d0d] border border-white/10 hover:border-[#C9A44C]/40 flex items-center justify-center text-white/40 hover:text-[#C9A44C] disabled:opacity-20 disabled:pointer-events-none transition-all duration-200 cursor-pointer flex-shrink-0"
+            aria-label="Siguiente"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Desktop dots */}
         <div className="flex items-center gap-2.5">
           {cards.map((_, i) => (
             <button
               key={i}
-              onClick={() => scrollTo(i)}
+              onClick={() => setActiveIndex(i)}
               className={`transition-all duration-300 cursor-pointer ${
                 i === activeIndex
                   ? "w-7 h-1.5 bg-[#C9A44C]"
@@ -189,80 +310,7 @@ export function SpotlightReel() {
             />
           ))}
         </div>
-      </div>
 
-      {/* ── Desktop: 2×2 editorial grid ── */}
-      <div className="hidden lg:grid lg:grid-cols-2">
-        {cards.map((card, i) => (
-          <div
-            key={i}
-            className="relative overflow-hidden"
-            style={{ height: "56vh", minHeight: "380px" }}
-          >
-            {/* Background image */}
-            <div
-              className="absolute inset-0"
-              style={{
-                backgroundImage: `url('${asset(card.img)}')`,
-                backgroundSize: "cover",
-                backgroundPosition: "center top",
-              }}
-            />
-            {/* Dark overlays */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/55 to-[#050505]/10" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#050505]/75 via-[#050505]/15 to-transparent" />
-
-            {/* Content */}
-            <div className="absolute inset-0 flex flex-col justify-between p-8">
-              <div className="flex items-start justify-between">
-                <span
-                  className="text-[#C9A44C] text-[9px] uppercase tracking-[0.2em] bg-[#050505]/60 px-3 py-1.5 border border-[#C9A44C]/25"
-                  style={{ fontFamily: "var(--font-body)" }}
-                >
-                  {card.category}
-                </span>
-                <span
-                  className="text-[#F5F0E8]/25 text-xs tabular-nums"
-                  style={{ fontFamily: "var(--font-body)" }}
-                >
-                  {String(i + 1).padStart(2, "0")} / {String(cards.length).padStart(2, "0")}
-                </span>
-              </div>
-
-              <div>
-                <div className="w-8 h-px bg-[#C9A44C]/60 mb-4" />
-                <h3
-                  className="text-[#F5F0E8] font-medium leading-tight mb-3 whitespace-pre-line"
-                  style={{
-                    fontFamily: "var(--font-heading)",
-                    fontSize: "clamp(1.6rem, 2.2vw, 2.4rem)",
-                    textShadow: "0 2px 20px rgba(0,0,0,0.95)",
-                  }}
-                >
-                  {card.title}
-                </h3>
-                <p
-                  className="text-[#F5F0E8]/50 text-sm leading-relaxed mb-5 max-w-xs"
-                  style={{ fontFamily: "var(--font-body)" }}
-                >
-                  {card.tagline}
-                </p>
-                <a
-                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(card.waMsg)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-[#C9A44C] text-[10px] uppercase tracking-widest border-b border-[#C9A44C]/40 hover:border-[#C9A44C] pb-0.5 transition-all duration-200 cursor-pointer"
-                  style={{ fontFamily: "var(--font-body)" }}
-                >
-                  Consultar
-                  <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-        ))}
       </div>
     </section>
   );
