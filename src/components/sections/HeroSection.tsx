@@ -50,7 +50,7 @@ export function HeroSection() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(to right, #050505 35%, rgba(5,5,5,0.85) 50%, rgba(5,5,5,0.4) 70%, rgba(5,5,5,0.1) 100%)",
+            "linear-gradient(to right, rgba(5,5,5,0.75) 0%, rgba(5,5,5,0.55) 40%, rgba(5,5,5,0.2) 70%, rgba(5,5,5,0.05) 100%)",
         }}
       />
       {/* Gold ambient */}
