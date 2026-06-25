@@ -216,10 +216,13 @@ export function SpotlightReel() {
           </button>
 
           {/* Card viewport — shows 2 cards at a time */}
-          <div className="overflow-hidden" style={{ width: `${CARD_W * 2 + CARD_GAP}px` }}>
+          <div className="overflow-hidden" style={{ width: `${CARD_W * 2 + CARD_GAP + 2}px` }}>
             <div
-              className="flex gap-4 transition-transform duration-500 ease-out"
-              style={{ transform: `translateX(-${activeIndex * (CARD_W + CARD_GAP)}px)` }}
+              className="flex transition-transform duration-500 ease-out"
+              style={{
+                gap: `${CARD_GAP}px`,
+                transform: `translateX(-${activeIndex * (CARD_W + CARD_GAP)}px)`,
+              }}
             >
               {cards.map((card, i) => (
                 <div
