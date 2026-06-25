@@ -1,6 +1,7 @@
 "use client";
 
 import { Phone, MapPin } from "lucide-react";
+import { asset } from "@/lib/asset";
 
 const WHATSAPP_NUMBER = "50498206681";
 
@@ -38,7 +39,7 @@ export function Footer() {
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2.5 mb-5">
               <img
-                src="/images/logo.jpg"
+                src={asset("/images/logo.jpg")}
                 alt="Legal Force & Asociados"
                 className="w-9 h-9 object-cover rounded-sm"
               />

@@ -2,6 +2,7 @@
 
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { Award, BookOpen, Scale, Phone } from "lucide-react";
+import { asset } from "@/lib/asset";
 
 const WHATSAPP_NUMBER = "50498206681";
 
@@ -44,7 +45,7 @@ export function TeamSection() {
               </div>
               {/* Image — on top, covers fallback when loaded */}
               <img
-                src="/images/ingvar-formal.jpg"
+                src={asset("/images/ingvar-formal.jpg")}
                 alt="Abog. Ingvar Onassis López Hernández frente al Poder Judicial"
                 className="absolute inset-0 w-full h-full object-cover object-top"
                 onError={(e) => {

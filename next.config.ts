@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   basePath: "/LegalForce",
   assetPrefix: "/LegalForce",
+  env: {
+    NEXT_PUBLIC_BASE_PATH: "/LegalForce",
+  },
   images: {
     unoptimized: true,
   },

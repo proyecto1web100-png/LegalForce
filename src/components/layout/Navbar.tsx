@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { asset } from "@/lib/asset";
 
 const navLinks = [
   { label: "Inicio", href: "#inicio" },
@@ -68,7 +69,7 @@ export function Navbar() {
             aria-label="Legal Force & Asociados inicio"
           >
             <img
-              src="/images/logo.jpg"
+              src={asset("/images/logo.jpg")}
               alt="Legal Force & Asociados"
               className="w-9 h-9 object-cover rounded-sm"
             />

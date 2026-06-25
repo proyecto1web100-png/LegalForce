@@ -3,6 +3,7 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { asset } from "@/lib/asset";
 
 const WHATSAPP_NUMBER = "50498206681";
 
@@ -97,7 +98,7 @@ export function SpotlightReel() {
               <div
                 className="absolute inset-0 lg:hidden"
                 style={{
-                  backgroundImage: `url('${card.img}')`,
+                  backgroundImage: `url('${asset(card.img)}')`,
                   backgroundSize: "cover",
                   backgroundPosition: "center top",
                 }}
@@ -106,7 +107,7 @@ export function SpotlightReel() {
               <div
                 className="hidden lg:block absolute top-0 right-0 bottom-0 w-[52%]"
                 style={{
-                  backgroundImage: `url('${card.img}')`,
+                  backgroundImage: `url('${asset(card.img)}')`,
                   backgroundSize: "cover",
                   backgroundPosition: "center top",
                 }}

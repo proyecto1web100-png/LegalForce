@@ -1,6 +1,7 @@
 "use client";
 
 import { Shield, Clock, Star } from "lucide-react";
+import { asset } from "@/lib/asset";
 
 const WHATSAPP_NUMBER = "50498206681";
 const WHATSAPP_MSG = encodeURIComponent(
@@ -39,7 +40,7 @@ export function HeroSection() {
       <div
         className="absolute right-0 top-0 bottom-0 w-full lg:w-[60%] pointer-events-none"
         style={{
-          backgroundImage: "url('/images/ingvar-portrait-v2.jpg')",
+          backgroundImage: `url('${asset("/images/ingvar-portrait-v2.jpg")}')`,
           backgroundSize: "cover",
           backgroundPosition: "right center",
           opacity: 0.40,
