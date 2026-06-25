@@ -62,6 +62,8 @@ export function HeroSection() {
         }}
       />
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A44C]/20 to-transparent" />
+      {/* Bottom fade to black */}
+      <div className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none" style={{ background: "linear-gradient(to bottom, transparent, #050505)" }} />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-24">
         {/* Label */}
