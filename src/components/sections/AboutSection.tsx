@@ -13,8 +13,26 @@ const values = [
 
 export function AboutSection() {
   return (
-    <section id="nosotros" className="py-20 bg-[#060606]">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="nosotros" className="relative py-20 bg-[#060606] overflow-hidden">
+      {/* Background image — translucent */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: "url('/images/about-bg.jpg')",
+          backgroundSize: "contain",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "right center",
+          opacity: 0.07,
+        }}
+      />
+      {/* Subtle dark vignette on edges */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse 80% 80% at 70% 50%, transparent 40%, #060606 100%)",
+        }}
+      />
+      <div className="relative max-w-7xl mx-auto px-6">
 
         {/* Header */}
         <AnimatedSection className="mb-14">
@@ -111,5 +129,6 @@ export function AboutSection() {
         </div>
       </div>
     </section>
+
   );
 }
